@@ -6,7 +6,7 @@
       "description": "Dashboard built and running on port 8081. Need to expose via Cloudflare Tunnel as cams.n8n-andy.xyz.",
       "status": "in-progress",
       "priority": "medium",
-      "agent": "max",
+      "agent": "worker",
       "project": "sxm-cams",
       "created": "2026-03-01",
       "updated": "2026-03-01"
@@ -25,10 +25,10 @@
     {
       "id": "secrets-centralize",
       "title": "Centralize External Secrets Management",
-      "description": "Secrets spread across ~/.openclaw/.env, credentials/, n8n-stack/.env. Plan: use pass (GPG-encrypted) as single source of truth.",
+      "description": "Install pass, generate GPG key, migrate all secrets from ~/.openclaw/.env, credentials/, n8n-stack/.env into encrypted store.",
       "status": "backlog",
       "priority": "medium",
-      "agent": "max",
+      "agent": "worker",
       "project": "infrastructure",
       "created": "2026-03-01",
       "updated": "2026-03-01"
@@ -47,10 +47,10 @@
     {
       "id": "gdrive-upload-fix",
       "title": "Fix Google Drive Upload (Service Account Quota)",
-      "description": "Google removed storage quota for service accounts. Read access works. Need Shared Drive or OAuth delegation.",
+      "description": "Research and implement fix: Shared Drive, OAuth delegation, or alternative upload method.",
       "status": "backlog",
       "priority": "low",
-      "agent": "max",
+      "agent": "researcher",
       "project": "infrastructure",
       "created": "2026-03-01",
       "updated": "2026-03-01"
@@ -72,7 +72,7 @@
       "description": "Removed himalaya binary, config, and gmail credentials. Email is now exclusively via agentmail API.",
       "status": "done",
       "priority": "medium",
-      "agent": "max",
+      "agent": "worker",
       "project": "infrastructure",
       "created": "2026-03-01",
       "updated": "2026-03-01"
@@ -83,7 +83,7 @@
       "description": "Updated 07:00 AST cron job to always report heartbeat status, even when all clear.",
       "status": "done",
       "priority": "medium",
-      "agent": "max",
+      "agent": "worker",
       "project": "operations",
       "created": "2026-03-01",
       "updated": "2026-03-01"
