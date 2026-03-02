@@ -153,6 +153,17 @@
       "project": "infrastructure",
       "created": "2026-03-02T19:47:13Z",
       "updated": "2026-03-02T19:47:13Z"
+    },
+    {
+      "id": "n8n-google-drive-calendar-workflow",
+      "title": "n8n Google Drive + Calendar workflow",
+      "description": "Finish n8n webhook workflow for Google Drive and Calendar integration. Email to jsambre@gmail.com with JSON + setup instructions.",
+      "status": "backlog",
+      "priority": "high",
+      "agent": "worker",
+      "project": "n8n",
+      "created": "2026-03-02T19:47:13Z",
+      "updated": "2026-03-02T19:47:13Z"
     }
   ]
 }
