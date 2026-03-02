@@ -131,6 +131,17 @@
       "project": "operations",
       "created": "2026-03-02T18:50:50Z",
       "updated": "2026-03-02T18:50:51Z"
+    },
+    {
+      "id": "self-eval-feedback-loop",
+      "title": "Self-Eval Feedback Loop",
+      "description": "Build mistakes journal, pre-flight checks, 6h eval cron, boot-read current weaknesses. Prune stale entries.",
+      "status": "backlog",
+      "priority": "high",
+      "agent": "max",
+      "project": "operations",
+      "created": "2026-03-02T19:08:32Z",
+      "updated": "2026-03-02T19:08:32Z"
     }
   ]
 }
