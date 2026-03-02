@@ -442,8 +442,8 @@
             progressColumn.innerHTML = '';
             doneColumn.innerHTML = '';
 
-            const todoTasks = filteredTasks.filter(t => t.status === 'todo');
-            const progressTasks = filteredTasks.filter(t => t.status === 'in_progress');
+            const todoTasks = filteredTasks.filter(t => t.status === 'backlog' || t.status === 'todo');
+            const progressTasks = filteredTasks.filter(t => t.status === 'in-progress' || t.status === 'in_progress');
             const doneTasks = filteredTasks.filter(t => t.status === 'done');
 
             document.getElementById('count-todo').textContent = todoTasks.length;
@@ -508,8 +508,8 @@
         function updateStats() {
             const filteredTasks = filterTasks();
             
-            const todoCount = filteredTasks.filter(t => t.status === 'todo').length;
-            const progressCount = filteredTasks.filter(t => t.status === 'in_progress').length;
+            const todoCount = filteredTasks.filter(t => t.status === 'backlog' || t.status === 'todo').length;
+            const progressCount = filteredTasks.filter(t => t.status === 'in-progress' || t.status === 'in_progress').length;
             const doneCount = filteredTasks.filter(t => t.status === 'done').length;
             const activeAgents = new Set(filteredTasks.map(t => t.agent)).size;
 
