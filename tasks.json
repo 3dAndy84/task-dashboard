@@ -186,6 +186,17 @@
       "project": "n8n",
       "created": "2026-03-02T21:24:52Z",
       "updated": "2026-03-02T21:24:52Z"
+    },
+    {
+      "id": "connect-calendar-to-morning-briefing",
+      "title": "Connect calendar to morning briefing",
+      "description": "Once Andy sets GCAL_API_TOKEN, update morning briefing cron (dafc366d) to replace PENDING_TOKEN with real token",
+      "status": "backlog",
+      "priority": "medium",
+      "agent": "max",
+      "project": "operations",
+      "created": "2026-03-02T21:24:53Z",
+      "updated": "2026-03-02T21:24:53Z"
     }
   ]
 }
