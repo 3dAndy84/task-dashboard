@@ -4,12 +4,12 @@
       "id": "sxm-cams-cloudflare",
       "title": "SXM Cams — Add Cloudflare Tunnel Route",
       "description": "Dashboard built and running on port 8081. Need to expose via Cloudflare Tunnel as cams.n8n-andy.xyz.",
-      "status": "in-progress",
+      "status": "done",
       "priority": "medium",
       "agent": "worker",
       "project": "sxm-cams",
       "created": "2026-03-01",
-      "updated": "2026-03-01"
+      "updated": "2026-03-02T18:50:46Z"
     },
     {
       "id": "sxm-cams-build",
