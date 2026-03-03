@@ -262,6 +262,29 @@
             color: #666;
         }
 
+        .card-lifecycle {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #3a3a3a;
+            font-size: 12px;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        .card-lifecycle div {
+            margin-bottom: 4px;
+        }
+
+        .card-lifecycle div:last-child {
+            margin-bottom: 0;
+        }
+
+        .lifecycle-proof {
+            color: #aaa;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
         .empty-state {
             text-align: center;
             padding: 40px 20px;
@@ -318,6 +341,10 @@
                 <div class="stat-value" id="stat-progress">0</div>
             </div>
             <div class="stat">
+                <div class="stat-label">Blocked</div>
+                <div class="stat-value" id="stat-blocked" style="color: #f59e0b;">0</div>
+            </div>
+            <div class="stat">
                 <div class="stat-label">Done</div>
                 <div class="stat-value" id="stat-done">0</div>
             </div>
@@ -357,6 +384,14 @@
                     <span class="column-count" id="count-progress">0</span>
                 </div>
                 <div class="cards" id="column-progress"></div>
+            </div>
+
+            <div class="column" style="background: #2a2215; border: 1px solid #f59e0b;">
+                <div class="column-header" style="color: #f59e0b; border-bottom-color: #f59e0b;">
+                    <span>Blocked</span>
+                    <span class="column-count" id="count-blocked">0</span>
+                </div>
+                <div class="cards" id="column-blocked"></div>
             </div>
 
             <div class="column">
@@ -431,23 +466,59 @@
             });
         }
 
+        function formatTimestamp(isoString) {
+            const date = new Date(isoString);
+            const month = date.toLocaleDateString('en-US', { month: 'short' });
+            const day = date.getDate();
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            return `${month} ${day}, ${hours}:${minutes}`;
+        }
+
+        function formatDuration(startIso, endIso) {
+            const start = new Date(startIso);
+            const end = new Date(endIso);
+            const diffMs = end - start;
+            
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+            
+            if (hours > 0) {
+                return `${hours}h ${minutes}m`;
+            } else if (minutes > 0) {
+                return `${minutes}m ${seconds}s`;
+            } else {
+                return `${seconds}s`;
+            }
+        }
+
+        function truncateProof(proof, maxLength = 120) {
+            if (proof.length <= maxLength) return proof;
+            return proof.substring(0, maxLength) + '...';
+        }
+
         function renderTasks() {
             const filteredTasks = filterTasks();
             
             const todoColumn = document.getElementById('column-todo');
             const progressColumn = document.getElementById('column-progress');
+            const blockedColumn = document.getElementById('column-blocked');
             const doneColumn = document.getElementById('column-done');
 
             todoColumn.innerHTML = '';
             progressColumn.innerHTML = '';
+            blockedColumn.innerHTML = '';
             doneColumn.innerHTML = '';
 
             const todoTasks = filteredTasks.filter(t => t.status === 'backlog' || t.status === 'todo');
             const progressTasks = filteredTasks.filter(t => t.status === 'in-progress' || t.status === 'in_progress');
+            const blockedTasks = filteredTasks.filter(t => t.status === 'blocked');
             const doneTasks = filteredTasks.filter(t => t.status === 'done');
 
             document.getElementById('count-todo').textContent = todoTasks.length;
             document.getElementById('count-progress').textContent = progressTasks.length;
+            document.getElementById('count-blocked').textContent = blockedTasks.length;
             document.getElementById('count-done').textContent = doneTasks.length;
 
             if (filteredTasks.length === 0) {
@@ -467,6 +538,12 @@
                 progressTasks.forEach(task => progressColumn.appendChild(createTaskCard(task)));
             }
 
+            if (blockedTasks.length === 0) {
+                blockedColumn.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>';
+            } else {
+                blockedTasks.forEach(task => blockedColumn.appendChild(createTaskCard(task)));
+            }
+
             if (doneTasks.length === 0) {
                 doneColumn.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>';
             } else {
@@ -483,12 +560,37 @@
             const createdDate = new Date(task.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
             const updatedDate = new Date(task.updated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
+            let lifecycleHtml = '';
+            if (task.started_at || task.completed_at || task.proof) {
+                lifecycleHtml = '<div class="card-lifecycle">';
+                
+                if (task.started_at) {
+                    lifecycleHtml += `<div>▶️ Started: ${formatTimestamp(task.started_at)}</div>`;
+                }
+                
+                if (task.completed_at) {
+                    lifecycleHtml += `<div>✅ Completed: ${formatTimestamp(task.completed_at)}</div>`;
+                }
+                
+                if (task.started_at && task.completed_at) {
+                    lifecycleHtml += `<div>⏱ Duration: ${formatDuration(task.started_at, task.completed_at)}</div>`;
+                }
+                
+                if (task.proof) {
+                    const truncatedProof = truncateProof(task.proof);
+                    lifecycleHtml += `<div class="lifecycle-proof">📦 Proof: ${truncatedProof}</div>`;
+                }
+                
+                lifecycleHtml += '</div>';
+            }
+
             card.innerHTML = `
                 <div class="card-header">
                     <div class="card-title">${task.title}</div>
                     <div class="priority-badge ${priorityClass}">${task.priority}</div>
                 </div>
                 <div class="card-description">${task.description}</div>
+                ${lifecycleHtml}
                 <div class="card-meta">
                     <div class="meta-item">
                         <span class="agent-badge">${task.agent}</span>
@@ -510,12 +612,14 @@
             
             const todoCount = filteredTasks.filter(t => t.status === 'backlog' || t.status === 'todo').length;
             const progressCount = filteredTasks.filter(t => t.status === 'in-progress' || t.status === 'in_progress').length;
+            const blockedCount = filteredTasks.filter(t => t.status === 'blocked').length;
             const doneCount = filteredTasks.filter(t => t.status === 'done').length;
             const activeAgents = new Set(filteredTasks.map(t => t.agent)).size;
 
             document.getElementById('stat-total').textContent = filteredTasks.length;
             document.getElementById('stat-todo').textContent = todoCount;
             document.getElementById('stat-progress').textContent = progressCount;
+            document.getElementById('stat-blocked').textContent = blockedCount;
             document.getElementById('stat-done').textContent = doneCount;
             document.getElementById('stat-agents').textContent = activeAgents;
         }
