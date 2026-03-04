@@ -59,13 +59,14 @@
       "id": "dashboard-fix-e2e-test",
       "title": "Dashboard fix e2e test",
       "description": "",
-      "status": "in-progress",
+      "status": "done",
       "priority": "low",
       "agent": "max",
       "project": "operations",
       "created": "2026-03-04T01:08:28Z",
-      "updated": "2026-03-04T01:08:29Z",
-      "started_at": "2026-03-04T01:08:29Z"
+      "updated": "2026-03-04T01:08:30Z",
+      "started_at": "2026-03-04T01:08:29Z",
+      "completed_at": "2026-03-04T01:08:30Z"
     }
   ]
 }
