@@ -1,17 +1,6 @@
 {
   "tasks": [
     {
-      "id": "sxm-cams-build",
-      "title": "SXM Cams — Build Dashboard & Proxy",
-      "description": "Built webcam dashboard with 11 SXM cameras. HLS proxy for PTZtv streams, YouTube embeds, grid/single view.",
-      "status": "done",
-      "priority": "high",
-      "agent": "max",
-      "project": "sxm-cams",
-      "created": "2026-03-01",
-      "updated": "2026-03-01"
-    },
-    {
       "id": "secrets-centralize",
       "title": "Centralize External Secrets Management",
       "description": "Install pass, generate GPG key, migrate all secrets from ~/.openclaw/.env, credentials/, n8n-stack/.env into encrypted store.",
