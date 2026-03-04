@@ -34,17 +34,6 @@
       "updated": "2026-03-01"
     },
     {
-      "id": "himalaya-removal",
-      "title": "Remove Himalaya CLI — Agentmail Only",
-      "description": "Removed himalaya binary, config, and gmail credentials. Email is now exclusively via agentmail API.",
-      "status": "done",
-      "priority": "medium",
-      "agent": "worker",
-      "project": "infrastructure",
-      "created": "2026-03-01",
-      "updated": "2026-03-01"
-    },
-    {
       "id": "briefing-heartbeat-update",
       "title": "Morning Briefing Always Includes Heartbeat",
       "description": "Updated 07:00 AST cron job to always report heartbeat status, even when all clear.",
