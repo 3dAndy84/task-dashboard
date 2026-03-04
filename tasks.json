@@ -23,17 +23,6 @@
       "updated": "2026-03-01"
     },
     {
-      "id": "dominica-proposal",
-      "title": "Dominica Duty-Free Field Study",
-      "description": "Business proposal for Douglas-Charles Airport duty-free retail. Written, humanized, emailed, posted to Dominica topic.",
-      "status": "done",
-      "priority": "high",
-      "agent": "max",
-      "project": "dominica",
-      "created": "2026-03-01",
-      "updated": "2026-03-01"
-    },
-    {
       "id": "n8n-google-drive-workflow",
       "title": "n8n Google Drive workflow",
       "description": "Build, test, deploy n8n webhook workflow for Drive CRUD. Email to Andy. Pending: Andy imports + connects OAuth + sets GDRIVE_API_TOKEN",
