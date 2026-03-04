@@ -12,17 +12,6 @@
       "updated": "2026-03-01"
     },
     {
-      "id": "acp-activation",
-      "title": "Activate ACP (Agent Communication Protocol)",
-      "description": "Claude Code CLI installed. Config patch ready. Andy deciding on VPS vs desktop session continuity.",
-      "status": "done",
-      "priority": "low",
-      "agent": "max",
-      "project": "infrastructure",
-      "created": "2026-03-01",
-      "updated": "2026-03-02T19:57:09Z"
-    },
-    {
       "id": "gdrive-upload-fix",
       "title": "Fix Google Drive Upload (Service Account Quota)",
       "description": "Research and implement fix: Shared Drive, OAuth delegation, or alternative upload method.",
