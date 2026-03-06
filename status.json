@@ -1,0 +1,21 @@
+{
+  "generated": 1772757934395,
+  "gateway": {
+    "version": "2026.2.23",
+    "status": "online",
+    "uptime_since": "2026-02-24 09:27:26",
+    "app_latest": "2026.3.2",
+    "sessions": 34,
+    "memory_files": 169,
+    "heartbeat": "30m"
+  },
+  "system": {
+    "disk_used": "60G",
+    "disk_total": "193G",
+    "disk_pct": "31%",
+    "mem_used": "2.8Gi",
+    "mem_total": "15Gi",
+    "load": "0.23 0.09 0.06",
+    "node_version": "v22.22.0"
+  }
+}
