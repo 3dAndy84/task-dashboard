@@ -1261,24 +1261,23 @@
                 statusEl.textContent = isOnline ? 'Online' : 'Offline';
                 statusDot.style.background = isOnline ? '#10b981' : '#dc2626';
                 
-                if (systemStatus.gateway.uptime_since) {
-                    const uptime = calculateUptime(systemStatus.gateway.uptime_since);
-                    document.getElementById('overview-uptime').textContent = uptime;
+                if (systemStatus.uptime) {
+                    document.getElementById('overview-uptime').textContent = systemStatus.uptime;
                 }
 
                 // Vector DB items
-                if (systemStatus.vector_db && systemStatus.vector_db.total_items !== undefined) {
-                    document.getElementById('overview-vector-items').textContent = systemStatus.vector_db.total_items;
+                if (systemStatus.vectorDb && systemStatus.vectorDb.items !== undefined) {
+                    document.getElementById('overview-vector-items').textContent = systemStatus.vectorDb.items;
                 }
 
                 // Last checkpoint
-                if (systemStatus.last_checkpoint) {
-                    document.getElementById('overview-checkpoint').textContent = formatRelativeTime(new Date(systemStatus.last_checkpoint).getTime());
+                if (systemStatus.lastCheckpoint) {
+                    document.getElementById('overview-checkpoint').textContent = systemStatus.lastCheckpoint;
                 }
 
                 // Session size
-                if (systemStatus.session && systemStatus.session.size) {
-                    document.getElementById('overview-session-size').textContent = systemStatus.session.size;
+                if (systemStatus.sessionSize) {
+                    document.getElementById('overview-session-size').textContent = systemStatus.sessionSize;
                 }
             }
 
