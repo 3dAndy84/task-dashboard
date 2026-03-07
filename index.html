@@ -12,77 +12,75 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: #1a1a1a;
             color: #e0e0e0;
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            padding: 20px;
+            min-height: 100vh;
         }
 
-        .header {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
-            padding: 1.5rem 2rem;
-            border-bottom: 2px solid #3b82f6;
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 25px;
+            text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
-        .header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #fff;
+        .header-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-row {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            position: relative;
-            z-index: 2;
+            justify-content: center;
+            gap: 12px;
         }
 
-        .pulse {
+        .header-status-dot {
             width: 12px;
             height: 12px;
-            background: #3b82f6;
             border-radius: 50%;
-            position: relative;
-            animation: pulse 2s ease-in-out infinite;
+            background: #3b82f6;
+            box-shadow: 0 0 12px #3b82f6, 0 0 4px #3b82f6;
+            animation: header-pulse 2s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-            }
-            50% {
-                box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
-            }
+        .header-status-dot.online {
+            background: #10b981;
+            box-shadow: 0 0 12px #10b981, 0 0 4px #10b981;
         }
 
-        .radar-scan {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
-            animation: scan 4s linear infinite;
+        .header-status-dot.error {
+            background: #ef4444;
+            box-shadow: 0 0 12px #ef4444, 0 0 4px #ef4444;
         }
 
-        @keyframes scan {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
+        @keyframes header-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .subtitle {
             font-size: 13px;
             color: #888;
-            position: relative;
-            z-index: 2;
-            margin-top: 0.5rem;
         }
 
         .refresh-btn {
@@ -98,53 +96,64 @@
             align-items: center;
             gap: 6px;
             position: absolute;
-            right: 2rem;
-            top: 1.5rem;
-            z-index: 2;
+            right: 0;
+            top: 0;
+        }
+        .refresh-btn:hover { background: #333; border-color: #4a4a4a; }
+        .refresh-btn:active { transform: scale(0.95); }
+        .refresh-btn.spinning .refresh-icon { animation: spin 0.6s linear; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #3a3a3a;
+            padding-bottom: 10px;
         }
 
-        .refresh-btn:hover {
-            background: #333;
-            border-color: #4a4a4a;
+        .tab {
+            background: transparent;
+            border: none;
+            color: #888;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
         }
 
-        .refresh-btn:active {
-            transform: scale(0.95);
+        .tab:hover {
+            background: #2a2a2a;
+            color: #b0b0b0;
         }
 
-        .refresh-btn.spinning .refresh-icon {
-            animation: spin 0.6s linear;
+        .tab.active {
+            background: #3b82f6;
+            color: #ffffff;
         }
 
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .tab-content {
+            display: none;
         }
 
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 2rem;
+        .tab-content.active {
+            display: block;
         }
 
         /* Overview Section */
-        .overview {
-            background: #252525;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
         .overview-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
         .overview-card {
-            background: #2a2a2a;
-            border-radius: 6px;
-            padding: 15px;
+            background: #252525;
+            border-radius: 8px;
+            padding: 20px;
         }
 
         .overview-card-title {
@@ -155,27 +164,33 @@
             margin-bottom: 12px;
         }
 
-        .health-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .health-row:last-child {
-            border-bottom: none;
-        }
-
-        .health-row-label {
-            font-size: 13px;
-            color: #999;
-        }
-
-        .health-row-value {
-            font-size: 13px;
-            color: #ffffff;
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 14px;
             font-weight: 600;
+        }
+
+        .status-online {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .status-offline {
+            background: rgba(220, 38, 38, 0.2);
+            color: #dc2626;
+        }
+
+        .health-info {
+            font-size: 13px;
+            color: #b0b0b0;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .health-info div {
+            margin-bottom: 4px;
         }
 
         .task-summary {
@@ -214,491 +229,286 @@
             color: #10b981;
         }
 
-        .next-jobs {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        /* Watchdog Tab */
+        .watchdog-status-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
         }
 
-        .next-job-item {
-            font-size: 13px;
-            color: #b0b0b0;
-            padding: 8px;
-            background: #333;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .watchdog-card {
+            background: #252525;
+            border-radius: 8px;
+            padding: 15px;
         }
 
-        .next-job-name {
-            font-weight: 500;
-            color: #e0e0e0;
-        }
-
-        .next-job-time {
-            color: #888;
+        .watchdog-card-label {
             font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
         }
 
-        .quick-stat {
-            font-size: 24px;
+        .watchdog-card-value {
+            font-size: 20px;
             font-weight: 700;
             color: #ffffff;
         }
 
-        .quick-stat-label {
-            font-size: 12px;
-            color: #888;
-            margin-top: 5px;
+        .watchdog-toggle {
+            margin-top: 8px;
         }
 
-        .cost-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .cost-row:last-child {
-            border-bottom: none;
-        }
-
-        .cost-row-label {
-            font-size: 13px;
-            color: #999;
-        }
-
-        .cost-row-value {
-            font-size: 13px;
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        .cost-value-green {
-            color: #10b981;
-        }
-
-        .model-cost-pill {
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .model-cost-pill.opus {
-            background: rgba(168, 85, 247, 0.2);
-            color: #a855f7;
-        }
-
-        .model-cost-pill.sonnet {
-            background: rgba(59, 130, 246, 0.2);
-            color: #3b82f6;
-        }
-
-        .model-cost-pill.haiku {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .agent-panel {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card {
-            background: #252525;
-            border-radius: 8px;
-            padding: 1.5rem;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: #3b82f6;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-        }
-
-        .card-title {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #888;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .agent-card {
+        .toggle-switch {
             position: relative;
-            overflow: hidden;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
         }
 
-        .agent-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
         }
 
-        .agent-task {
-            font-size: 0.875rem;
-            color: #aaa;
-            margin-bottom: 1rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .agent-meta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            font-size: 0.75rem;
-        }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .meta-label {
-            color: #666;
-            text-transform: uppercase;
-            font-size: 0.65rem;
-            letter-spacing: 0.5px;
-        }
-
-        .meta-value {
-            color: #e0e0e0;
-            font-weight: 600;
-            margin-top: 0.25rem;
-        }
-
-        .status-badge {
+        .toggle-slider {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.375rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #3a3a3a;
+            transition: 0.3s;
+            border-radius: 24px;
         }
 
-        .status-active {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-            border: 1px solid #10b981;
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
         }
 
-        .status-idle {
-            background: rgba(245, 158, 11, 0.2);
-            color: #f59e0b;
-            border: 1px solid #f59e0b;
+        input:checked + .toggle-slider {
+            background-color: #10b981;
         }
 
-        .status-failed {
-            background: rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-            border: 1px solid #ef4444;
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
         }
 
-        .activity-feed {
-            max-height: 600px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .activity-feed::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .activity-feed::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        .activity-feed::-webkit-scrollbar-thumb {
-            background: #3b82f6;
-            border-radius: 3px;
-        }
-
-        .activity-item {
-            padding: 1rem;
-            border-bottom: 1px solid #333;
-            transition: background 0.2s;
-        }
-
-        .activity-item:hover {
-            background: #2a2a2a;
-        }
-
-        .activity-item:last-child {
-            border-bottom: none;
-        }
-
-        .activity-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .activity-agent {
-            font-weight: 700;
-            color: #3b82f6;
-        }
-
-        .activity-time {
-            font-size: 0.75rem;
-            color: #666;
-        }
-
-        .activity-desc {
-            font-size: 0.875rem;
-            color: #aaa;
-            margin-bottom: 0.5rem;
-            word-break: break-word;
-        }
-
-        .activity-footer {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.75rem;
-            color: #666;
-        }
-
-        .health-metrics {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .metric {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .metric:last-child {
-            border-bottom: none;
-        }
-
-        .metric-label {
-            color: #888;
-            font-size: 0.875rem;
-        }
-
-        .metric-value {
-            font-weight: 700;
-            font-size: 1.125rem;
-            color: #fff;
-        }
-
-        .metric-value.up {
-            color: #10b981;
-        }
-
-        .metric-value.down {
-            color: #ef4444;
-        }
-
-        /* Task Board Filters */
-        .task-filters {
-            grid-column: 1 / -1;
+        .event-timeline {
             background: #252525;
             border-radius: 8px;
-            padding: 1.5rem;
-            border: 1px solid #333;
+            padding: 20px;
+        }
+
+        .timeline-header {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3a3a3a;
+        }
+
+        .timeline-events {
             display: flex;
-            gap: 1.5rem;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .timeline-event {
+            background: #2a2a2a;
+            border-radius: 6px;
+            padding: 12px;
+            border-left: 4px solid;
+        }
+
+        .timeline-event.level-info {
+            border-left-color: #3b82f6;
+        }
+
+        .timeline-event.level-warn {
+            border-left-color: #f59e0b;
+        }
+
+        .timeline-event.level-error {
+            border-left-color: #dc2626;
+        }
+
+        .timeline-event.level-success {
+            border-left-color: #10b981;
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .event-type {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .event-timestamp {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .event-message {
+            font-size: 14px;
+            color: #e0e0e0;
+        }
+
+        /* Task Board */
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
-            align-items: flex-end;
         }
 
         .filter-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 5px;
         }
 
         .filter-group label {
-            font-size: 0.75rem;
+            font-size: 12px;
             color: #888;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .filter-group select, .filter-group input[type="text"] {
-            background: #1a1a1a;
+        select, input[type="text"] {
+            background: #252525;
             color: #e0e0e0;
             border: 1px solid #3a3a3a;
-            padding: 0.5rem 0.75rem;
+            padding: 8px 12px;
             border-radius: 6px;
-            font-size: 0.875rem;
+            font-size: 14px;
             cursor: pointer;
             min-width: 150px;
-            min-height: 44px;
         }
 
-        .filter-group select:hover, .filter-group input[type="text"]:hover {
+        select:hover, input[type="text"]:hover {
             border-color: #4a4a4a;
         }
 
-        .filter-group select:focus, .filter-group input[type="text"]:focus {
+        select:focus, input[type="text"]:focus {
             outline: none;
-            border-color: #3b82f6;
+            border-color: #5a5a5a;
         }
 
-        .filter-group input[type="text"] {
+        input[type="text"] {
             cursor: text;
         }
 
-        /* Kanban Board */
-        .kanban {
-            grid-column: 1 / -1;
+        .board {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .column {
+            background: #252525;
+            border-radius: 8px;
+            padding: 20px;
             min-height: 400px;
         }
 
-        .kanban-column {
-            background: #252525;
-            border-radius: 8px;
-            padding: 1rem;
-            border: 1px solid #333;
-        }
-
-        .kanban-column.blocked-column {
-            background: #2a2215;
-            border: 1px solid #f59e0b;
-        }
-
-        .kanban-header {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid #3b82f6;
+        .column-header {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3a3a3a;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .kanban-column.blocked-column .kanban-header {
-            color: #f59e0b;
-            border-bottom-color: #f59e0b;
+        .column-count {
+            font-size: 14px;
+            color: #888;
+            font-weight: normal;
         }
 
-        .kanban-count {
-            background: #3b82f6;
-            color: #fff;
-            padding: 0.25rem 0.5rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-        }
-
-        .kanban-column.blocked-column .kanban-count {
-            background: #f59e0b;
-        }
-
-        .kanban-cards {
+        .cards {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
-            max-height: 500px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
+            gap: 12px;
         }
 
-        .kanban-cards::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .kanban-cards::-webkit-scrollbar-thumb {
-            background: #3b82f6;
-            border-radius: 2px;
-        }
-
-        .kanban-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
+        .card {
+            background: #2a2a2a;
             border-radius: 6px;
-            padding: 0.875rem;
-            transition: all 0.2s;
-            cursor: pointer;
+            padding: 15px;
             border-left: 4px solid;
-            overflow: hidden;
-            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .kanban-card:hover {
-            border-color: #3b82f6;
-            transform: translateX(4px);
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .kanban-card.agent-opus, .kanban-card.agent-max {
+        .card.agent-max {
             border-left-color: #a855f7;
         }
 
-        .kanban-card.agent-sonnet, .kanban-card.agent-worker {
+        .card.agent-opus {
+            border-left-color: #a855f7;
+        }
+
+        .card.agent-sonnet {
             border-left-color: #3b82f6;
         }
 
-        .kanban-card.agent-haiku, .kanban-card.agent-researcher {
+        .card.agent-haiku {
             border-left-color: #10b981;
         }
 
-        .kanban-card-header {
+        .card.agent-worker {
+            border-left-color: #3b82f6;
+        }
+
+        .card.agent-researcher {
+            border-left-color: #10b981;
+        }
+
+        .card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 0.75rem;
-            gap: 0.5rem;
-            flex-wrap: nowrap;
+            margin-bottom: 10px;
+            gap: 10px;
         }
 
-        .kanban-card-title {
+        .card-title {
+            font-size: 15px;
             font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            font-size: 0.875rem;
+            color: #ffffff;
             flex: 1;
         }
 
-        .kanban-card-description {
-            font-size: 0.8rem;
-            color: #b0b0b0;
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-            word-break: break-word;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-
         .priority-badge {
-            font-size: 0.625rem;
-            padding: 0.25rem 0.5rem;
+            font-size: 10px;
+            padding: 3px 8px;
             border-radius: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -721,221 +531,98 @@
             color: #ffffff;
         }
 
-        .kanban-card-meta {
+        .card-description {
+            font-size: 13px;
+            color: #b0b0b0;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .card-meta {
             display: flex;
-            gap: 0.5rem;
             flex-wrap: wrap;
-            font-size: 0.75rem;
-            margin-bottom: 0.5rem;
-            clear: both;
+            gap: 10px;
+            font-size: 12px;
+            color: #888;
         }
 
-        .tag {
-            padding: 0.25rem 0.5rem;
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .agent-badge {
+            padding: 3px 8px;
             border-radius: 4px;
-            font-size: 0.7rem;
             font-weight: 600;
-        }
-
-        .tag-agent {
+            font-size: 11px;
             text-transform: uppercase;
         }
 
-        .agent-opus .tag-agent, .agent-max .tag-agent {
+        .agent-max .agent-badge,
+        .agent-opus .agent-badge {
             background: rgba(168, 85, 247, 0.2);
             color: #a855f7;
         }
 
-        .agent-sonnet .tag-agent, .agent-worker .tag-agent {
+        .agent-sonnet .agent-badge,
+        .agent-worker .agent-badge {
             background: rgba(59, 130, 246, 0.2);
             color: #3b82f6;
         }
 
-        .agent-haiku .tag-agent, .agent-researcher .tag-agent {
+        .agent-haiku .agent-badge,
+        .agent-researcher .agent-badge {
             background: rgba(16, 185, 129, 0.2);
             color: #10b981;
         }
 
-        .tag-project {
-            background: rgba(139, 92, 246, 0.2);
-            color: #8b5cf6;
+        .project-tag {
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: #3a3a3a;
+            font-size: 11px;
             text-transform: uppercase;
         }
 
         .date-info {
-            font-size: 0.7rem;
+            font-size: 11px;
             color: #666;
         }
 
         .card-lifecycle {
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px solid #3a3a3a;
-            font-size: 0.75rem;
+            font-size: 12px;
             color: #888;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            clear: both;
+            line-height: 1.5;
         }
 
         .card-lifecycle div {
+            margin-bottom: 4px;
+        }
+
+        .card-lifecycle div:last-child {
             margin-bottom: 0;
-            display: block;
-            position: relative;
         }
 
         .lifecycle-proof {
             color: #aaa;
             word-wrap: break-word;
-            word-break: break-word;
             white-space: pre-wrap;
-            max-width: 100%;
-            overflow: hidden;
         }
 
         .empty-state {
             text-align: center;
-            padding: 2.5rem 1rem;
+            padding: 40px 20px;
             color: #666;
         }
 
         .empty-state-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .calendar {
-            grid-column: 1 / -1;
-        }
-
-        .calendar-events {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .calendar-event {
-            background: #1a1a1a;
-            border-left: 3px solid #3b82f6;
-            padding: 1rem;
-            border-radius: 4px;
-        }
-
-        .event-time {
-            font-size: 0.75rem;
-            color: #3b82f6;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-title {
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.25rem;
-        }
-
-        .event-desc {
-            font-size: 0.875rem;
-            color: #aaa;
-        }
-
-        .stats-bar {
-            background: #252525;
-            border-radius: 8px;
-            padding: 1.5rem 2rem;
-            border: 1px solid #333;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #3b82f6;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-value.warning {
-            color: #f59e0b;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .loading {
-            text-align: center;
-            color: #666;
-            padding: 2rem;
-        }
-
-        .error {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid #ef4444;
-            color: #ef4444;
-            padding: 1rem;
-            border-radius: 4px;
-            margin: 1rem 0;
-        }
-
-        /* Tab Navigation */
-        .tabs {
-            display: flex;
-            gap: 0;
-            background: #252525;
-            border-radius: 8px 8px 0 0;
-            border: 1px solid #333;
-            border-bottom: none;
-            margin-bottom: 0;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .tab {
-            flex: 1;
-            padding: 1rem 2rem;
-            background: transparent;
-            border: none;
-            color: #888;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-            white-space: nowrap;
-            min-width: 120px;
-        }
-
-        .tab:hover {
-            color: #3b82f6;
-            background: rgba(59, 130, 246, 0.05);
-        }
-
-        .tab.active {
-            color: #fff;
-            border-bottom-color: #3b82f6;
-            background: rgba(59, 130, 246, 0.1);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
+            font-size: 48px;
+            margin-bottom: 10px;
         }
 
         /* Cron Jobs Table */
@@ -1044,6 +731,14 @@
             font-size: 13px;
         }
 
+        .error-message {
+            background: #dc2626;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
         /* Memory Tab */
         .memory-controls {
             display: flex;
@@ -1147,450 +842,12 @@
             margin-bottom: 15px;
         }
 
-        /* Watchdog Styles */
-        .watchdog-status-card {
-            margin-bottom: 1.5rem;
-        }
-
-        .watchdog-status {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .status-indicator {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: #1a1a1a;
-            border-radius: 8px;
-            border: 2px solid;
-        }
-
-        .status-indicator.healthy {
-            border-color: #10b981;
-        }
-
-        .status-indicator.unhealthy {
-            border-color: #ef4444;
-        }
-
-        .status-indicator.crash_loop {
-            border-color: #dc2626;
-            animation: pulse-border 2s ease-in-out infinite;
-        }
-
-        .status-indicator.repairing {
-            border-color: #f59e0b;
-        }
-
-        .status-indicator.manual_intervention {
-            border-color: #dc2626;
-            animation: pulse-border 1s ease-in-out infinite;
-        }
-
-        @keyframes pulse-border {
-            0%, 100% {
-                border-color: #dc2626;
-                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
-            }
-            50% {
-                border-color: #ef4444;
-                box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
-            }
-        }
-
-        .status-icon {
-            font-size: 3rem;
-            text-align: center;
-        }
-
-        .status-label {
-            text-align: center;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #888;
-            margin-bottom: 0.5rem;
-        }
-
-        .status-value {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .status-indicator.healthy .status-value {
-            color: #10b981;
-        }
-
-        .status-indicator.unhealthy .status-value,
-        .status-indicator.crash_loop .status-value,
-        .status-indicator.manual_intervention .status-value {
-            color: #ef4444;
-        }
-
-        .status-indicator.repairing .status-value {
-            color: #f59e0b;
-        }
-
-        .config-info {
-            padding: 1rem;
-            background: #1a1a1a;
-            border-radius: 6px;
-            margin-top: 1rem;
-            font-size: 0.875rem;
-            color: #aaa;
-            grid-column: 1 / -1;
-        }
-
-        .config-info strong {
-            color: #fff;
-        }
-
-        .config-info code {
-            background: #252525;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: #3b82f6;
-        }
-
-        .watchdog-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .watchdog-metric {
-            background: #252525;
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .watchdog-metric-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #3b82f6;
-            margin-bottom: 0.5rem;
-        }
-
-        .watchdog-metric-value.warning {
-            color: #f59e0b;
-        }
-
-        .watchdog-metric-value.critical {
-            color: #ef4444;
-        }
-
-        .watchdog-metric-label {
-            font-size: 0.875rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .watchdog-timeline {
-            max-height: 600px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .watchdog-timeline::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .watchdog-timeline::-webkit-scrollbar-thumb {
-            background: #3b82f6;
-            border-radius: 3px;
-        }
-
-        .timeline-event {
-            display: flex;
-            gap: 1rem;
-            padding: 1rem;
-            border-bottom: 1px solid #333;
-            transition: background 0.2s;
-            cursor: pointer;
-        }
-
-        .timeline-event:hover {
-            background: #2a2a2a;
-        }
-
-        .timeline-event:last-child {
-            border-bottom: none;
-        }
-
-        .event-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .event-content {
-            flex: 1;
-        }
-
-        .event-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-type {
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.875rem;
-        }
-
-        .event-level-info {
-            color: #888;
-        }
-
-        .event-level-warn {
-            color: #f59e0b;
-        }
-
-        .event-level-error {
-            color: #ef4444;
-        }
-
-        .event-level-critical {
-            color: #dc2626;
-            animation: pulse-text 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-text {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.6;
-            }
-        }
-
-        .event-message {
-            color: #aaa;
-            margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-        }
-
-        .event-details {
-            background: #1a1a1a;
-            padding: 0.75rem;
-            border-radius: 4px;
-            margin-top: 0.5rem;
-            font-size: 0.8125rem;
-            color: #888;
-            font-family: 'Courier New', monospace;
-            display: none;
-        }
-
-        .timeline-event.expanded .event-details {
-            display: block;
-        }
-
-        .crash-history {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            gap: 1rem;
-            padding: 2rem 1rem;
-            min-height: 200px;
-        }
-
-        .crash-bar {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .crash-bar-visual {
-            width: 100%;
-            background: #3b82f6;
-            border-radius: 4px 4px 0 0;
-            transition: all 0.3s ease;
-            min-height: 10px;
-            position: relative;
-        }
-
-        .crash-bar-visual.has-crashes {
-            background: #ef4444;
-        }
-
-        .crash-bar:hover .crash-bar-visual {
-            opacity: 0.8;
-        }
-
-        .crash-bar-count {
-            position: absolute;
-            top: -1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: 700;
-            font-size: 0.875rem;
-            color: #fff;
-        }
-
-        .crash-bar-label {
-            font-size: 0.75rem;
-            color: #888;
-            text-align: center;
-        }
-
-        @media (max-width: 1200px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .kanban {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .header {
-                padding: 1rem;
-            }
-
-            .header h1 {
-                font-size: 1.5rem;
-            }
-
-            .refresh-btn {
-                right: 1rem;
-                top: 1rem;
-            }
-
-            .agent-panel {
+            .board {
                 grid-template-columns: 1fr;
-            }
-
-            .card {
-                padding: 1.25rem;
-            }
-
-            .activity-feed {
-                max-height: 400px;
-            }
-
-            .activity-item {
-                padding: 0.875rem;
-            }
-
-            .activity-desc {
-                font-size: 0.8125rem;
-            }
-
-            .task-filters, .memory-controls {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .filter-group {
-                width: 100%;
-            }
-
-            .filter-group select, .filter-group input[type="text"] {
-                width: 100%;
-                min-width: unset;
-                padding: 0.75rem 1rem;
-                font-size: 1rem;
-            }
-
-            .kanban {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .kanban-cards {
-                max-height: 300px;
-            }
-
-            .calendar-events {
-                grid-template-columns: 1fr;
-            }
-
-            .health-metrics {
-                gap: 1rem;
-            }
-
-            .metric {
-                padding: 0.625rem 0;
-            }
-
-            .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                padding: 1.25rem 1rem;
-            }
-
-            .stat-value {
-                font-size: 2rem;
-            }
-
-            .stat-label {
-                font-size: 0.8125rem;
-            }
-
-            .kanban-card {
-                padding: 1rem;
-                min-height: 44px;
-            }
-
-            .status-badge {
-                padding: 0.5rem 0.875rem;
-                font-size: 0.6875rem;
-                min-height: 32px;
-            }
-
-            .priority-badge {
-                padding: 0.375rem 0.625rem;
-                font-size: 0.6875rem;
-            }
-
-            .tabs {
-                overflow-x: auto;
-            }
-
-            .tab {
-                padding: 0.875rem 1.5rem;
-                font-size: 0.8125rem;
-            }
-
-            .watchdog-status {
-                grid-template-columns: 1fr;
-            }
-
-            .watchdog-metrics {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .watchdog-timeline {
-                max-height: 400px;
-            }
-
-            .crash-history {
-                padding: 1.5rem 0.5rem;
-                gap: 0.5rem;
             }
 
             .overview-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .memory-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1602,181 +859,69 @@
             .cron-table td {
                 padding: 8px;
             }
+
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .watchdog-status-cards {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="radar-scan"></div>
-        <h1>
-            <div class="pulse"></div>
-            Mission Control
-        </h1>
-        <div class="subtitle" id="last-refresh">Last refresh: loading...</div>
-        <button class="refresh-btn" onclick="refreshDashboard()" id="refresh-btn">
-            <span class="refresh-icon">🔄</span> Refresh
-        </button>
-    </div>
-
     <div class="container">
+        <header>
+            <div class="header-title">
+                <div class="header-row">
+                    <span class="header-status-dot" id="header-dot"></span>
+                    <h1>Mission Control</h1>
+                </div>
+                <div class="subtitle" id="last-refresh">Last refresh: loading...</div>
+            </div>
+            <button class="refresh-btn" onclick="refreshDashboard()" id="refresh-btn">
+                <span class="refresh-icon">🔄</span> Refresh
+            </button>
+        </header>
+
         <div id="error-container"></div>
 
-        <!-- Overview Section -->
-        <div class="overview">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab" onclick="switchTab('overview')">Overview</button>
+            <button class="tab active" onclick="switchTab('tasks')">Tasks</button>
+            <button class="tab" onclick="switchTab('cron-jobs')">Cron Jobs</button>
+            <button class="tab" onclick="switchTab('memory')">Memory</button>
+            <button class="tab" onclick="switchTab('watchdog')">Watchdog</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview-tab" class="tab-content">
             <div class="overview-grid">
                 <div class="overview-card">
                     <div class="overview-card-title">System Health</div>
-                    <div id="system-health-content">
-                        <div class="health-row">
-                            <span class="health-row-label">Gateway</span>
-                            <span class="health-row-value" id="health-gateway">🟢 Online</span>
-                        </div>
-                        <div class="health-row">
-                            <span class="health-row-label">Uptime</span>
-                            <span class="health-row-value" id="health-uptime">—</span>
-                        </div>
-                        <div class="health-row">
-                            <span class="health-row-label">Vector DB</span>
-                            <span class="health-row-value" id="health-vectordb">0 items</span>
-                        </div>
-                        <div class="health-row">
-                            <span class="health-row-label">Last Checkpoint</span>
-                            <span class="health-row-value" id="health-checkpoint">—</span>
-                        </div>
-                        <div class="health-row">
-                            <span class="health-row-label">Session Size</span>
-                            <span class="health-row-value" id="health-session-size">—</span>
-                        </div>
-                        <div class="health-row">
-                            <span class="health-row-label">Cron Jobs</span>
-                            <span class="health-row-value" id="health-cron-jobs">0</span>
-                        </div>
+                    <div class="health-info">
+                        <div>Gateway: <span class="status-badge status-online" id="overview-gateway-status">Online</span></div>
+                        <div>Uptime: <span id="overview-uptime">—</span></div>
                     </div>
                 </div>
 
                 <div class="overview-card">
                     <div class="overview-card-title">Task Summary</div>
-                    <div class="task-summary" id="task-summary">
+                    <div class="task-summary" id="overview-task-summary">
                         <span class="task-pill task-pill-backlog">Backlog: 0</span>
                         <span class="task-pill task-pill-progress">In Progress: 0</span>
                         <span class="task-pill task-pill-blocked">Blocked: 0</span>
                         <span class="task-pill task-pill-done">Done: 0</span>
                     </div>
                 </div>
-
-                <div class="overview-card">
-                    <div class="overview-card-title">Next Scheduled Jobs</div>
-                    <div class="next-jobs" id="next-jobs">
-                        <div class="empty-state" style="padding: 10px;">No scheduled jobs</div>
-                    </div>
-                </div>
-
-                <div class="overview-card">
-                    <div class="overview-card-title">Quick Stats</div>
-                    <div style="display: flex; gap: 20px;">
-                        <div>
-                            <div class="quick-stat" id="stat-active-crons">0</div>
-                            <div class="quick-stat-label">Active Jobs</div>
-                        </div>
-                        <div>
-                            <div class="quick-stat" id="stat-tasks-progress">0</div>
-                            <div class="quick-stat-label">In Progress</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="overview-card">
-                    <div class="overview-card-title">Estimated Cost</div>
-                    <div id="cost-content">
-                        <div class="cost-row">
-                            <span class="cost-row-label">Session Total</span>
-                            <span class="cost-row-value cost-value-green" id="cost-today">$0.00</span>
-                        </div>
-                        <div class="cost-row">
-                            <span class="cost-row-label">Monthly Budget</span>
-                            <span class="cost-row-value" id="cost-budget">$60</span>
-                        </div>
-                        <div class="cost-row" style="flex-direction:column;gap:8px;align-items:stretch;">
-                            <span class="cost-row-label">By Model</span>
-                            <div id="cost-models" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
-                        </div>
-                        <div class="cost-row">
-                            <span class="cost-row-label">Tokens In / Out</span>
-                            <span class="cost-row-value" id="cost-tokens-io">0 / 0</span>
-                        </div>
-                        <div class="cost-row">
-                            <span class="cost-row-label">Cache R / W</span>
-                            <span class="cost-row-value" id="cost-cache">0 / 0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab Navigation -->
-        <div class="tabs">
-            <button class="tab active" data-tab="dashboard">Dashboard</button>
-            <button class="tab" data-tab="tasks">Tasks</button>
-            <button class="tab" data-tab="cron-jobs">Cron Jobs</button>
-            <button class="tab" data-tab="memory">Memory</button>
-            <button class="tab" data-tab="watchdog">Watchdog</button>
-        </div>
-
-        <!-- Dashboard Tab -->
-        <div id="tab-dashboard" class="tab-content active">
-            <!-- Agent Status Panel -->
-            <div class="agent-panel" id="agentPanel">
-                <div class="loading">Loading agents...</div>
-            </div>
-
-            <div class="grid">
-                <!-- Activity Feed -->
-                <div class="card">
-                    <div class="card-title">Activity Feed</div>
-                    <div class="activity-feed" id="activityFeed">
-                        <div class="loading">Loading activity...</div>
-                    </div>
-                </div>
-
-                <!-- Task Filters (Dashboard view) -->
-                <div class="task-filters">
-                    <div class="filter-group">
-                        <label for="filter-agent-dash">Filter by Agent</label>
-                        <select id="filter-agent-dash">
-                            <option value="all">All Agents</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="filter-project-dash">Filter by Project</label>
-                        <select id="filter-project-dash">
-                            <option value="all">All Projects</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- System Health -->
-                <div class="card">
-                    <div class="card-title">System Health</div>
-                    <div class="health-metrics" id="healthMetrics">
-                        <div class="loading">Loading health data...</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Task Board (Dashboard view) -->
-            <div class="kanban" id="taskBoardDash">
-                <div class="loading">Loading tasks...</div>
-            </div>
-
-            <!-- Stats Bar -->
-            <div class="stats-bar" id="statsBar">
-                <div class="loading">Loading stats...</div>
             </div>
         </div>
 
         <!-- Tasks Tab -->
-        <div id="tab-tasks" class="tab-content">
-            <div class="task-filters">
+        <div id="tasks-tab" class="tab-content active">
+            <div class="filters">
                 <div class="filter-group">
                     <label for="filter-agent">Filter by Agent</label>
                     <select id="filter-agent">
@@ -1791,13 +936,43 @@
                 </div>
             </div>
 
-            <div class="kanban" id="taskBoard">
-                <div class="loading">Loading tasks...</div>
+            <div class="board">
+                <div class="column">
+                    <div class="column-header">
+                        <span>To Do</span>
+                        <span class="column-count" id="count-todo">0</span>
+                    </div>
+                    <div class="cards" id="column-todo"></div>
+                </div>
+
+                <div class="column">
+                    <div class="column-header">
+                        <span>In Progress</span>
+                        <span class="column-count" id="count-progress">0</span>
+                    </div>
+                    <div class="cards" id="column-progress"></div>
+                </div>
+
+                <div class="column" style="background: #2a2215; border: 1px solid #f59e0b;">
+                    <div class="column-header" style="color: #f59e0b; border-bottom-color: #f59e0b;">
+                        <span>Blocked</span>
+                        <span class="column-count" id="count-blocked">0</span>
+                    </div>
+                    <div class="cards" id="column-blocked"></div>
+                </div>
+
+                <div class="column">
+                    <div class="column-header">
+                        <span>Done</span>
+                        <span class="column-count" id="count-done">0</span>
+                    </div>
+                    <div class="cards" id="column-done"></div>
+                </div>
             </div>
         </div>
 
         <!-- Cron Jobs Tab -->
-        <div id="tab-cron-jobs" class="tab-content">
+        <div id="cron-jobs-tab" class="tab-content">
             <table class="cron-table">
                 <thead>
                     <tr>
@@ -1819,7 +994,7 @@
         </div>
 
         <!-- Memory Tab -->
-        <div id="tab-memory" class="tab-content">
+        <div id="memory-tab" class="tab-content">
             <div class="memory-controls">
                 <div class="filter-group">
                     <label for="memory-search">Search</label>
@@ -1844,58 +1019,63 @@
         </div>
 
         <!-- Watchdog Tab -->
-        <div id="tab-watchdog" class="tab-content">
-            <!-- Status Card -->
-            <div class="card watchdog-status-card">
-                <div class="card-title">Watchdog Status</div>
-                <div class="watchdog-status" id="watchdogStatus">
-                    <div class="loading">Loading watchdog status...</div>
+        <div id="watchdog-tab" class="tab-content">
+            <div class="watchdog-status-cards">
+                <div class="watchdog-card">
+                    <div class="watchdog-card-label">Gateway Status</div>
+                    <div class="watchdog-card-value" id="watchdog-gateway-status">—</div>
+                </div>
+                <div class="watchdog-card">
+                    <div class="watchdog-card-label">Uptime</div>
+                    <div class="watchdog-card-value" id="watchdog-uptime">—</div>
+                </div>
+                <div class="watchdog-card">
+                    <div class="watchdog-card-label">Crashes (24h)</div>
+                    <div class="watchdog-card-value" id="watchdog-crash-count">0</div>
+                </div>
+                <div class="watchdog-card">
+                    <div class="watchdog-card-label">Repair Attempts (24h)</div>
+                    <div class="watchdog-card-value" id="watchdog-repair-count">0</div>
+                </div>
+                <div class="watchdog-card">
+                    <div class="watchdog-card-label">Auto-Repair</div>
+                    <div class="watchdog-toggle">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="watchdog-auto-repair" disabled>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="watchdog-card">
+                    <div class="watchdog-card-label">Notifications</div>
+                    <div class="watchdog-toggle">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="watchdog-notifications" disabled>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
 
-            <!-- Metrics Row -->
-            <div class="watchdog-metrics" id="watchdogMetrics">
-                <div class="loading">Loading metrics...</div>
-            </div>
-
-            <!-- Event Timeline -->
-            <div class="card">
-                <div class="card-title">Event Timeline</div>
-                <div class="watchdog-timeline" id="watchdogTimeline">
-                    <div class="loading">Loading events...</div>
-                </div>
-            </div>
-
-            <!-- Crash History Chart -->
-            <div class="card">
-                <div class="card-title">Crash History (Last 7 Days)</div>
-                <div class="crash-history" id="crashHistory">
-                    <div class="loading">Loading crash data...</div>
+            <div class="event-timeline">
+                <div class="timeline-header">Recent Events</div>
+                <div class="timeline-events" id="watchdog-events">
+                    <div class="empty-state">No events</div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Configuration
         const STATUS_API_URL = 'https://n8n-andy.xyz/webhook/mission-control/status';
         const WATCHDOG_API_URL = 'https://n8n-andy.xyz/webhook/mission-control/watchdog';
-        const REFRESH_INTERVAL = 30000; // 30 seconds
 
-        // State
         let allTasks = [];
         let allCronJobs = [];
-        let agents = [];
-        let activity = [];
-        let health = {};
-        let stats = {};
-        let watchdog = {};
+        let systemStatus = null;
+        let watchdogData = null;
         let memoryData = null;
         let currentFilters = {
-            agent: 'all',
-            project: 'all'
-        };
-        let currentFiltersDash = {
             agent: 'all',
             project: 'all'
         };
@@ -1903,92 +1083,86 @@
             search: '',
             category: 'all'
         };
-        let currentTab = 'dashboard';
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            loadAllData();
-            setInterval(loadAllData, REFRESH_INTERVAL);
-            
-            // Setup filter listeners (Tasks tab)
-            document.getElementById('filter-agent').addEventListener('change', (e) => {
-                currentFilters.agent = e.target.value;
-                renderTaskBoard();
-            });
-
-            document.getElementById('filter-project').addEventListener('change', (e) => {
-                currentFilters.project = e.target.value;
-                renderTaskBoard();
-            });
-
-            // Setup filter listeners (Dashboard tab)
-            document.getElementById('filter-agent-dash').addEventListener('change', (e) => {
-                currentFiltersDash.agent = e.target.value;
-                renderDashboardTaskBoard();
-                updateStats();
-            });
-
-            document.getElementById('filter-project-dash').addEventListener('change', (e) => {
-                currentFiltersDash.project = e.target.value;
-                renderDashboardTaskBoard();
-                updateStats();
-            });
-
-            // Setup memory filters
-            document.getElementById('memory-search').addEventListener('input', (e) => {
-                memoryFilters.search = e.target.value;
-                renderMemory();
-            });
-
-            document.getElementById('memory-category').addEventListener('change', (e) => {
-                memoryFilters.category = e.target.value;
-                renderMemory();
-            });
-
-            // Setup tab switching
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const tabName = tab.dataset.tab;
-                    switchTab(tabName);
-                });
-            });
-        });
-
-        function switchTab(tabName) {
-            currentTab = tabName;
-            
-            // Update tab buttons
-            document.querySelectorAll('.tab').forEach(tab => {
-                if (tab.dataset.tab === tabName) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-            
-            // Update tab content
-            document.querySelectorAll('.tab-content').forEach(content => {
-                if (content.id === `tab-${tabName}`) {
-                    content.classList.add('active');
-                } else {
-                    content.classList.remove('active');
-                }
-            });
-        }
-
-        async function loadAllData() {
+        async function loadData() {
             try {
-                await Promise.all([
-                    loadTasks(),
-                    loadCronJobs(),
-                    loadStatus(),
-                    loadWatchdog(),
-                    loadMemory()
-                ]);
+                // Load tasks (local file)
+                const tasksResponse = await fetch('tasks.json');
+                if (tasksResponse.ok) {
+                    const tasksData = await tasksResponse.json();
+                    allTasks = tasksData.tasks || [];
+                } else {
+                    allTasks = [];
+                }
+
+                // Load cron jobs (local file)
+                try {
+                    const cronResponse = await fetch('cron-jobs.json');
+                    if (cronResponse.ok) {
+                        const cronData = await cronResponse.json();
+                        allCronJobs = cronData.jobs || [];
+                    } else {
+                        allCronJobs = [];
+                    }
+                } catch (e) {
+                    allCronJobs = [];
+                }
+
+                // Load system status (live API)
+                try {
+                    const statusResponse = await fetch(STATUS_API_URL);
+                    if (statusResponse.ok) {
+                        systemStatus = await statusResponse.json();
+                    } else {
+                        systemStatus = null;
+                    }
+                } catch (e) {
+                    console.error('Failed to load status API:', e);
+                    systemStatus = null;
+                }
+
+                // Load watchdog data (live API)
+                try {
+                    const watchdogResponse = await fetch(WATCHDOG_API_URL);
+                    if (watchdogResponse.ok) {
+                        watchdogData = await watchdogResponse.json();
+                    } else {
+                        watchdogData = null;
+                    }
+                } catch (e) {
+                    console.error('Failed to load watchdog API:', e);
+                    watchdogData = null;
+                }
+
+                // Load memory data (local file)
+                try {
+                    const memoryResponse = await fetch('memory.json');
+                    if (memoryResponse.ok) {
+                        memoryData = await memoryResponse.json();
+                    } else {
+                        memoryData = null;
+                    }
+                } catch (e) {
+                    memoryData = null;
+                }
+
+                populateFilters();
+                renderTasks();
+                renderCronJobs();
+                renderMemory();
+                updateOverview();
+                updateWatchdog();
+                updateHeaderDot();
                 updateLastRefreshTime();
             } catch (error) {
-                console.error('Failed to load data:', error);
+                showError(`Failed to load data: ${error.message}`);
+                console.error('Error loading data:', error);
             }
+        }
+
+        function showError(message) {
+            const errorContainer = document.getElementById('error-container');
+            errorContainer.innerHTML = `<div class="error-message">${message}</div>`;
         }
 
         function updateLastRefreshTime() {
@@ -1997,236 +1171,27 @@
             document.getElementById('last-refresh').textContent = `Last refresh: ${timeStr}`;
         }
 
-        async function loadTasks() {
-            try {
-                const response = await fetch('./tasks.json');
-                if (!response.ok) throw new Error('Failed to fetch tasks');
-                
-                const data = await response.json();
-                allTasks = Array.isArray(data) ? data : (data.tasks || []);
-                
-                populateFilters();
-                renderTaskBoard();
-                renderDashboardTaskBoard();
-                updateStats();
-                updateOverview();
-            } catch (error) {
-                console.error('Error loading tasks:', error);
-                allTasks = [];
-            }
+        function calculateUptime(uptimeSince) {
+            const now = Date.now();
+            const uptimeDate = new Date(uptimeSince).getTime();
+            const diffMs = now - uptimeDate;
+            
+            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            
+            return `${days}d ${hours}h ${minutes}m`;
         }
 
-        async function loadCronJobs() {
-            try {
-                const response = await fetch('./cron-jobs.json');
-                if (response.ok) {
-                    const data = await response.json();
-                    allCronJobs = data.jobs || [];
-                } else {
-                    allCronJobs = [];
-                }
-                renderCronJobs();
-                updateOverview();
-            } catch (error) {
-                console.error('Error loading cron jobs:', error);
-                allCronJobs = [];
+        function updateHeaderDot() {
+            const headerDot = document.getElementById('header-dot');
+            if (systemStatus && systemStatus.gateway && systemStatus.gateway.status === 'online') {
+                headerDot.className = 'header-status-dot online';
+            } else if (systemStatus) {
+                headerDot.className = 'header-status-dot error';
+            } else {
+                headerDot.className = 'header-status-dot';
             }
-        }
-
-        async function loadStatus() {
-            try {
-                const response = await fetch(STATUS_API_URL);
-                if (!response.ok) throw new Error('Failed to fetch status');
-                
-                const data = await response.json();
-                agents = data.agents || [];
-                activity = data.activity || [];
-                health = data.health || {};
-                stats = data.stats || {};
-
-                renderAgents();
-                renderActivity();
-                renderHealth();
-                updateStats();
-                updateOverview();
-            } catch (error) {
-                console.error('Error loading status:', error);
-                // Use fallback
-                useMockData();
-            }
-        }
-
-        async function loadWatchdog() {
-            try {
-                const response = await fetch(WATCHDOG_API_URL);
-                if (!response.ok) throw new Error('Failed to fetch watchdog data');
-                
-                watchdog = await response.json();
-                renderWatchdog();
-            } catch (error) {
-                console.error('Error loading watchdog:', error);
-                document.getElementById('watchdogStatus').innerHTML = `
-                    <div class="error">Failed to load watchdog data: ${error.message}</div>
-                `;
-            }
-        }
-
-        async function loadMemory() {
-            try {
-                const response = await fetch('./memory.json');
-                if (response.ok) {
-                    memoryData = await response.json();
-                } else {
-                    memoryData = null;
-                }
-                renderMemory();
-            } catch (error) {
-                console.error('Error loading memory:', error);
-                memoryData = null;
-            }
-        }
-
-        function useMockData() {
-            agents = [
-                {
-                    name: 'orchestrator',
-                    status: 'active',
-                    task: 'Coordinating sub-agent tasks and planning architecture',
-                    runtime: '2h 34m',
-                    model: 'claude-opus-4-6'
-                },
-                {
-                    name: 'coder-01',
-                    status: 'active',
-                    task: 'Building Mission Control dashboard',
-                    runtime: '14m',
-                    model: 'claude-sonnet-4-5'
-                },
-                {
-                    name: 'researcher',
-                    status: 'idle',
-                    task: 'Standby',
-                    runtime: '0m',
-                    model: 'perplexity-sonar-pro'
-                }
-            ];
-
-            activity = [
-                {
-                    timestamp: new Date(Date.now() - 5 * 60000).toISOString(),
-                    agent: 'coder-01',
-                    event: 'spawned',
-                    description: 'Building Mission Control dashboard',
-                    status: 'active',
-                    duration: null,
-                    cost: null
-                }
-            ];
-
-            health = {
-                gateway: 'up',
-                uptime: '14d 6h 23m',
-                vectorCount: 2847,
-                lastCheckpoint: '2h ago',
-                sessionSize: '42 MB',
-                cronJobs: 8
-            };
-
-            stats = {
-                costToday: '$2.34',
-                activeAgents: 2
-            };
-
-            renderAgents();
-            renderActivity();
-            renderHealth();
-            updateStats();
-        }
-
-        function renderAgents() {
-            const panel = document.getElementById('agentPanel');
-            if (!agents.length) {
-                panel.innerHTML = '<div class="loading">No active agents</div>';
-                return;
-            }
-
-            panel.innerHTML = agents.map(agent => `
-                <div class="card agent-card">
-                    <div class="status-badge status-${agent.status}">${agent.status}</div>
-                    <div class="agent-name">${agent.name}</div>
-                    <div class="agent-task">${agent.task}</div>
-                    <div class="agent-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Runtime</span>
-                            <span class="meta-value">${agent.runtime}</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Model</span>
-                            <span class="meta-value">${agent.model}</span>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function renderActivity() {
-            const feed = document.getElementById('activityFeed');
-            if (!activity.length) {
-                feed.innerHTML = '<div class="loading">No recent activity</div>';
-                return;
-            }
-
-            feed.innerHTML = activity.map(item => `
-                <div class="activity-item">
-                    <div class="activity-header">
-                        <span class="activity-agent">${item.agent}</span>
-                        <span class="activity-time">${formatTime(item.timestamp)}</span>
-                    </div>
-                    <div class="activity-desc">${item.description}</div>
-                    <div class="activity-footer">
-                        <span class="status-badge status-${item.status}">${item.event}</span>
-                        ${item.duration ? `<span>⏱️ ${item.duration}</span>` : ''}
-                        ${item.cost ? `<span>💰 ${item.cost}</span>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function renderHealth() {
-            const metrics = document.getElementById('healthMetrics');
-            if (!Object.keys(health).length) {
-                metrics.innerHTML = '<div class="loading">No health data</div>';
-                return;
-            }
-
-            metrics.innerHTML = `
-                <div class="metric">
-                    <span class="metric-label">Gateway</span>
-                    <span class="metric-value ${health.gateway === 'up' ? 'up' : 'down'}">
-                        ${health.gateway === 'up' ? '🟢 Online' : '🔴 Offline'}
-                    </span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Uptime</span>
-                    <span class="metric-value">${health.uptime}</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Vector DB</span>
-                    <span class="metric-value">${health.vectorCount.toLocaleString()} items</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Last Checkpoint</span>
-                    <span class="metric-value">${health.lastCheckpoint}</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Session Size</span>
-                    <span class="metric-value">${health.sessionSize}</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Cron Jobs</span>
-                    <span class="metric-value">${health.cronJobs}</span>
-                </div>
-            `;
         }
 
         function updateOverview() {
@@ -2236,66 +1201,110 @@
             const blockedCount = allTasks.filter(t => t.status === 'blocked').length;
             const doneCount = allTasks.filter(t => t.status === 'done').length;
 
-            document.getElementById('task-summary').innerHTML = `
+            document.getElementById('overview-task-summary').innerHTML = `
                 <span class="task-pill task-pill-backlog">Backlog: ${backlogCount}</span>
                 <span class="task-pill task-pill-progress">In Progress: ${progressCount}</span>
                 <span class="task-pill task-pill-blocked">Blocked: ${blockedCount}</span>
                 <span class="task-pill task-pill-done">Done: ${doneCount}</span>
             `;
 
-            // Quick stats
-            const activeCrons = allCronJobs.filter(j => j.enabled).length;
-            document.getElementById('stat-active-crons').textContent = activeCrons;
-            document.getElementById('stat-tasks-progress').textContent = progressCount;
+            // System Health
+            if (systemStatus && systemStatus.gateway) {
+                const isOnline = systemStatus.gateway.status === 'online';
+                const statusEl = document.getElementById('overview-gateway-status');
+                statusEl.textContent = isOnline ? 'Online' : 'Offline';
+                statusEl.className = isOnline ? 'status-badge status-online' : 'status-badge status-offline';
+                
+                if (systemStatus.gateway.uptime_since) {
+                    const uptime = calculateUptime(systemStatus.gateway.uptime_since);
+                    document.getElementById('overview-uptime').textContent = uptime;
+                }
+            }
+        }
 
-            // Next scheduled jobs
-            const nextJobsContainer = document.getElementById('next-jobs');
-            const upcomingJobs = allCronJobs
-                .filter(j => j.enabled && j.state && j.state.nextRunAtMs)
-                .sort((a, b) => a.state.nextRunAtMs - b.state.nextRunAtMs)
-                .slice(0, 3);
+        function updateWatchdog() {
+            if (!watchdogData) return;
 
-            if (upcomingJobs.length === 0) {
-                nextJobsContainer.innerHTML = '<div class="empty-state" style="padding: 10px;">No scheduled jobs</div>';
+            // Update status cards
+            if (watchdogData.gateway) {
+                document.getElementById('watchdog-gateway-status').textContent = 
+                    watchdogData.gateway.status === 'online' ? '🟢 Online' : '🔴 Offline';
+                
+                if (watchdogData.gateway.uptime_since) {
+                    document.getElementById('watchdog-uptime').textContent = 
+                        calculateUptime(watchdogData.gateway.uptime_since);
+                }
+            }
+
+            if (watchdogData.stats) {
+                document.getElementById('watchdog-crash-count').textContent = 
+                    watchdogData.stats.crashes_24h || 0;
+                document.getElementById('watchdog-repair-count').textContent = 
+                    watchdogData.stats.repairs_24h || 0;
+            }
+
+            if (watchdogData.config) {
+                document.getElementById('watchdog-auto-repair').checked = 
+                    watchdogData.config.auto_repair || false;
+                document.getElementById('watchdog-notifications').checked = 
+                    watchdogData.config.notifications || false;
+            }
+
+            // Update events timeline
+            const eventsContainer = document.getElementById('watchdog-events');
+            if (watchdogData.events && watchdogData.events.length > 0) {
+                eventsContainer.innerHTML = watchdogData.events
+                    .slice(0, 20) // Show last 20 events
+                    .map(event => {
+                        const levelClass = `level-${event.level || 'info'}`;
+                        return `
+                            <div class="timeline-event ${levelClass}">
+                                <div class="event-header">
+                                    <span class="event-type">${event.type || 'event'}</span>
+                                    <span class="event-timestamp">${formatEventTimestamp(event.timestamp)}</span>
+                                </div>
+                                <div class="event-message">${event.message}</div>
+                            </div>
+                        `;
+                    }).join('');
             } else {
-                nextJobsContainer.innerHTML = upcomingJobs.map(job => {
-                    const nextMs = job.state.nextRunAtMs;
-                    const timeUntil = nextMs < Date.now() ? estimateNextRun(job) : formatRelativeTime(nextMs);
-                    return `
-                        <div class="next-job-item">
-                            <span class="next-job-name">${job.name}</span>
-                            <span class="next-job-time">${timeUntil}</span>
-                        </div>
-                    `;
-                }).join('');
+                eventsContainer.innerHTML = '<div class="empty-state">No events</div>';
             }
+        }
 
-            // System Health in overview
-            if (health) {
-                document.getElementById('health-gateway').textContent = health.gateway === 'up' ? '🟢 Online' : '🔴 Offline';
-                document.getElementById('health-uptime').textContent = health.uptime || '—';
-                document.getElementById('health-vectordb').textContent = `${health.vectorCount || 0} items`;
-                document.getElementById('health-checkpoint').textContent = health.lastCheckpoint || '—';
-                document.getElementById('health-session-size').textContent = health.sessionSize || '—';
-                document.getElementById('health-cron-jobs').textContent = health.cronJobs || 0;
-            }
+        function formatEventTimestamp(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            
+            if (diffMins < 1) return 'just now';
+            if (diffMins < 60) return `${diffMins}m ago`;
+            if (diffMins < 1440) return `${Math.floor(diffMins / 60)}h ago`;
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
 
-            // Cost metrics (placeholder - will be populated from status endpoint if available)
-            if (stats && stats.costToday) {
-                document.getElementById('cost-today').textContent = stats.costToday;
-            }
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${tabName}-tab`).classList.add('active');
         }
 
         function populateFilters() {
             const agentSelect = document.getElementById('filter-agent');
             const projectSelect = document.getElementById('filter-project');
-            const agentSelectDash = document.getElementById('filter-agent-dash');
-            const projectSelectDash = document.getElementById('filter-project-dash');
 
-            const agents = [...new Set(allTasks.map(task => task.agent))].filter(Boolean).sort();
-            const projects = [...new Set(allTasks.map(task => task.project))].filter(Boolean).sort();
+            const agents = [...new Set(allTasks.map(task => task.agent))].sort();
+            const projects = [...new Set(allTasks.map(task => task.project))].sort();
 
-            // Tasks tab filters
             agentSelect.innerHTML = '<option value="all">All Agents</option>';
             agents.forEach(agent => {
                 const option = document.createElement('option');
@@ -2311,37 +1320,12 @@
                 option.textContent = project.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
                 projectSelect.appendChild(option);
             });
-
-            // Dashboard tab filters
-            agentSelectDash.innerHTML = '<option value="all">All Agents</option>';
-            agents.forEach(agent => {
-                const option = document.createElement('option');
-                option.value = agent;
-                option.textContent = agent.charAt(0).toUpperCase() + agent.slice(1);
-                agentSelectDash.appendChild(option);
-            });
-
-            projectSelectDash.innerHTML = '<option value="all">All Projects</option>';
-            projects.forEach(project => {
-                const option = document.createElement('option');
-                option.value = project;
-                option.textContent = project.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-                projectSelectDash.appendChild(option);
-            });
         }
 
         function filterTasks() {
             return allTasks.filter(task => {
                 const agentMatch = currentFilters.agent === 'all' || task.agent === currentFilters.agent;
                 const projectMatch = currentFilters.project === 'all' || task.project === currentFilters.project;
-                return agentMatch && projectMatch;
-            });
-        }
-
-        function filterTasksDash() {
-            return allTasks.filter(task => {
-                const agentMatch = currentFiltersDash.agent === 'all' || task.agent === currentFiltersDash.agent;
-                const projectMatch = currentFiltersDash.project === 'all' || task.project === currentFiltersDash.project;
                 return agentMatch && projectMatch;
             });
         }
@@ -2373,70 +1357,14 @@
             }
         }
 
-        function formatDurationMs(durationMs) {
-            const seconds = Math.floor(durationMs / 1000);
-            const minutes = Math.floor(seconds / 60);
-            const hours = Math.floor(minutes / 60);
-            
-            if (hours > 0) {
-                return `${hours}h ${minutes % 60}m`;
-            } else if (minutes > 0) {
-                return `${minutes}m ${seconds % 60}s`;
-            } else {
-                return `${seconds}s`;
-            }
-        }
-
-        function formatRelativeTime(timestampMs) {
-            const now = Date.now();
-            const diff = timestampMs - now;
-            const absDiff = Math.abs(diff);
-            
-            const seconds = Math.floor(absDiff / 1000);
-            const minutes = Math.floor(seconds / 60);
-            const hours = Math.floor(minutes / 60);
-            const days = Math.floor(hours / 24);
-            
-            if (diff < 0) {
-                // Past
-                if (days > 0) return `${days}d ago`;
-                if (hours > 0) return `${hours}h ago`;
-                if (minutes > 0) return `${minutes}m ago`;
-                return `${seconds}s ago`;
-            } else {
-                // Future
-                if (days > 0) return `in ${days}d`;
-                if (hours > 0) return `in ${hours}h`;
-                if (minutes > 0) return `in ${minutes}m`;
-                return `in ${seconds}s`;
-            }
-        }
-
-        function estimateNextRun(job) {
-            const schedule = job.schedule;
-            const now = Date.now();
-            
-            if (schedule.kind === 'every') {
-                const interval = schedule.everyMs;
-                const anchor = schedule.anchorMs || (job.state && job.state.lastRunAtMs) || now;
-                let next = anchor;
-                while (next <= now) {
-                    next += interval;
-                }
-                return formatRelativeTime(next);
-            }
-            
-            return 'awaiting refresh';
-        }
-
         function formatCronSchedule(schedule) {
             if (schedule.kind === 'cron') {
+                const parts = schedule.expr.split(' ');
                 if (schedule.expr === '0 7 * * *') return 'Daily at 7:00 AM AST';
                 if (schedule.expr === '0 19 * * *') return 'Daily at 7:00 PM AST';
                 if (schedule.expr === '0 */12 * * *') return 'Every 12 hours';
                 if (schedule.expr === '0 0 * * 0') return 'Sundays at midnight AST';
                 if (schedule.expr === '0 1 * * 0') return 'Sundays at 1:00 AM AST';
-                
                 return `Cron: ${schedule.expr} (${schedule.tz.split('/').pop()})`;
             } else if (schedule.kind === 'every') {
                 const hours = schedule.everyMs / (1000 * 60 * 60);
@@ -2451,122 +1379,106 @@
             return 'Unknown schedule';
         }
 
+        function formatRelativeTime(timestampMs) {
+            const now = Date.now();
+            const diff = timestampMs - now;
+            const absDiff = Math.abs(diff);
+            
+            const seconds = Math.floor(absDiff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+            
+            if (diff < 0) {
+                if (days > 0) return `${days}d ago`;
+                if (hours > 0) return `${hours}h ago`;
+                if (minutes > 0) return `${minutes}m ago`;
+                return `${seconds}s ago`;
+            } else {
+                if (days > 0) return `in ${days}d`;
+                if (hours > 0) return `in ${hours}h`;
+                if (minutes > 0) return `in ${minutes}m`;
+                return `in ${seconds}s`;
+            }
+        }
+
+        function formatDurationMs(durationMs) {
+            const seconds = Math.floor(durationMs / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            
+            if (hours > 0) {
+                return `${hours}h ${minutes % 60}m`;
+            } else if (minutes > 0) {
+                return `${minutes}m ${seconds % 60}s`;
+            } else {
+                return `${seconds}s`;
+            }
+        }
+
         function truncateProof(proof, maxLength = 120) {
             if (proof.length <= maxLength) return proof;
             return proof.substring(0, maxLength) + '...';
         }
 
-        function renderTaskBoard() {
-            const board = document.getElementById('taskBoard');
+        function renderTasks() {
             const filteredTasks = filterTasks();
             
-            if (!allTasks.length) {
-                board.innerHTML = '<div class="loading">No tasks found</div>';
-                return;
-            }
+            const todoColumn = document.getElementById('column-todo');
+            const progressColumn = document.getElementById('column-progress');
+            const blockedColumn = document.getElementById('column-blocked');
+            const doneColumn = document.getElementById('column-done');
+
+            todoColumn.innerHTML = '';
+            progressColumn.innerHTML = '';
+            blockedColumn.innerHTML = '';
+            doneColumn.innerHTML = '';
 
             const todoTasks = filteredTasks.filter(t => t.status === 'backlog' || t.status === 'todo');
             const progressTasks = filteredTasks.filter(t => t.status === 'in-progress' || t.status === 'in_progress');
             const blockedTasks = filteredTasks.filter(t => t.status === 'blocked');
             const doneTasks = filteredTasks.filter(t => t.status === 'done');
 
-            board.innerHTML = `
-                <div class="kanban-column">
-                    <div class="kanban-header">
-                        To Do
-                        <span class="kanban-count">${todoTasks.length}</span>
-                    </div>
-                    <div class="kanban-cards">
-                        ${todoTasks.length > 0 ? todoTasks.map(renderTaskCard).join('') : '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>'}
-                    </div>
-                </div>
-                <div class="kanban-column">
-                    <div class="kanban-header">
-                        In Progress
-                        <span class="kanban-count">${progressTasks.length}</span>
-                    </div>
-                    <div class="kanban-cards">
-                        ${progressTasks.length > 0 ? progressTasks.map(renderTaskCard).join('') : '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>'}
-                    </div>
-                </div>
-                <div class="kanban-column blocked-column">
-                    <div class="kanban-header">
-                        Blocked
-                        <span class="kanban-count">${blockedTasks.length}</span>
-                    </div>
-                    <div class="kanban-cards">
-                        ${blockedTasks.length > 0 ? blockedTasks.map(renderTaskCard).join('') : '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>'}
-                    </div>
-                </div>
-                <div class="kanban-column">
-                    <div class="kanban-header">
-                        Done
-                        <span class="kanban-count">${doneTasks.length}</span>
-                    </div>
-                    <div class="kanban-cards">
-                        ${doneTasks.length > 0 ? doneTasks.map(renderTaskCard).join('') : '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>'}
-                    </div>
-                </div>
-            `;
-        }
+            document.getElementById('count-todo').textContent = todoTasks.length;
+            document.getElementById('count-progress').textContent = progressTasks.length;
+            document.getElementById('count-blocked').textContent = blockedTasks.length;
+            document.getElementById('count-done').textContent = doneTasks.length;
 
-        function renderDashboardTaskBoard() {
-            const board = document.getElementById('taskBoardDash');
-            const filteredTasks = filterTasksDash();
-            
-            if (!allTasks.length) {
-                board.innerHTML = '<div class="loading">No tasks found</div>';
+            if (filteredTasks.length === 0) {
+                todoColumn.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📭</div><div>No tasks found</div></div>';
                 return;
             }
 
-            const todoTasks = filteredTasks.filter(t => t.status === 'backlog' || t.status === 'todo');
-            const progressTasks = filteredTasks.filter(t => t.status === 'in-progress' || t.status === 'in_progress');
-            const blockedTasks = filteredTasks.filter(t => t.status === 'blocked');
-            const doneTasks = filteredTasks.filter(t => t.status === 'done');
+            if (todoTasks.length === 0) {
+                todoColumn.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>';
+            } else {
+                todoTasks.forEach(task => todoColumn.appendChild(createTaskCard(task)));
+            }
 
-            board.innerHTML = `
-                <div class="kanban-column">
-                    <div class="kanban-header">
-                        To Do
-                        <span class="kanban-count">${todoTasks.length}</span>
-                    </div>
-                    <div class="kanban-cards">
-                        ${todoTasks.length > 0 ? todoTasks.map(renderTaskCard).join('') : '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>'}
-                    </div>
-                </div>
-                <div class="kanban-column">
-                    <div class="kanban-header">
-                        In Progress
-                        <span class="kanban-count">${progressTasks.length}</span>
-                    </div>
-                    <div class="kanban-cards">
-                        ${progressTasks.length > 0 ? progressTasks.map(renderTaskCard).join('') : '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>'}
-                    </div>
-                </div>
-                <div class="kanban-column blocked-column">
-                    <div class="kanban-header">
-                        Blocked
-                        <span class="kanban-count">${blockedTasks.length}</span>
-                    </div>
-                    <div class="kanban-cards">
-                        ${blockedTasks.length > 0 ? blockedTasks.map(renderTaskCard).join('') : '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>'}
-                    </div>
-                </div>
-                <div class="kanban-column">
-                    <div class="kanban-header">
-                        Done
-                        <span class="kanban-count">${doneTasks.length}</span>
-                    </div>
-                    <div class="kanban-cards">
-                        ${doneTasks.length > 0 ? doneTasks.map(renderTaskCard).join('') : '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>'}
-                    </div>
-                </div>
-            `;
+            if (progressTasks.length === 0) {
+                progressColumn.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>';
+            } else {
+                progressTasks.forEach(task => progressColumn.appendChild(createTaskCard(task)));
+            }
+
+            if (blockedTasks.length === 0) {
+                blockedColumn.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>';
+            } else {
+                blockedTasks.forEach(task => blockedColumn.appendChild(createTaskCard(task)));
+            }
+
+            if (doneTasks.length === 0) {
+                doneColumn.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✨</div><div>No tasks</div></div>';
+            } else {
+                doneTasks.forEach(task => doneColumn.appendChild(createTaskCard(task)));
+            }
         }
 
-        function renderTaskCard(task) {
+        function createTaskCard(task) {
+            const card = document.createElement('div');
+            card.className = `card agent-${task.agent}`;
+
             const priorityClass = `priority-${task.priority}`;
-            const agentClass = `agent-${task.agent}`;
             
             const createdDate = new Date(task.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
             const updatedDate = new Date(task.updated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -2595,23 +1507,27 @@
                 lifecycleHtml += '</div>';
             }
 
-            return `
-                <div class="kanban-card ${agentClass}">
-                    <div class="kanban-card-header">
-                        <div class="kanban-card-title">${task.title}</div>
-                        ${task.priority ? `<div class="priority-badge ${priorityClass}">${task.priority}</div>` : ''}
+            card.innerHTML = `
+                <div class="card-header">
+                    <div class="card-title">${task.title}</div>
+                    <div class="priority-badge ${priorityClass}">${task.priority}</div>
+                </div>
+                <div class="card-description">${task.description}</div>
+                ${lifecycleHtml}
+                <div class="card-meta">
+                    <div class="meta-item">
+                        <span class="agent-badge">${task.agent}</span>
                     </div>
-                    ${task.description ? `<div class="kanban-card-description">${task.description}</div>` : ''}
-                    ${lifecycleHtml}
-                    <div class="kanban-card-meta">
-                        ${task.agent ? `<span class="tag tag-agent">${task.agent}</span>` : ''}
-                        ${task.project ? `<span class="tag tag-project">${task.project}</span>` : ''}
+                    <div class="meta-item">
+                        <span class="project-tag">${task.project}</span>
                     </div>
                     <div class="date-info">
                         Created: ${createdDate} • Updated: ${updatedDate}
                     </div>
                 </div>
             `;
+
+            return card;
         }
 
         function renderCronJobs() {
@@ -2645,15 +1561,9 @@
                     ? `${formatRelativeTime(job.state.lastRunAtMs)}${job.state.lastDurationMs ? ` (${formatDurationMs(job.state.lastDurationMs)})` : ''}`
                     : 'Never';
 
-                let nextRun = 'Not scheduled';
-                if (job.state && job.state.nextRunAtMs) {
-                    const nextMs = job.state.nextRunAtMs;
-                    if (nextMs < Date.now()) {
-                        nextRun = estimateNextRun(job);
-                    } else {
-                        nextRun = formatRelativeTime(nextMs);
-                    }
-                }
+                const nextRun = job.state && job.state.nextRunAtMs
+                    ? formatRelativeTime(job.state.nextRunAtMs)
+                    : 'Not scheduled';
 
                 const enabledIndicator = job.enabled 
                     ? '<span class="enabled-indicator"></span>'
@@ -2724,283 +1634,36 @@
             }).join('');
         }
 
-        function updateStats() {
-            const statsBar = document.getElementById('statsBar');
-            const filteredTasks = filterTasksDash();
-            
-            const today = new Date().toDateString();
-            const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-            
-            const todoCount = filteredTasks.filter(t => t.status === 'backlog' || t.status === 'todo').length;
-            const progressCount = filteredTasks.filter(t => t.status === 'in-progress' || t.status === 'in_progress').length;
-            const blockedCount = filteredTasks.filter(t => t.status === 'blocked').length;
-            const doneCount = filteredTasks.filter(t => t.status === 'done').length;
-            
-            const completedToday = filteredTasks.filter(t => 
-                t.status === 'done' && 
-                t.completed_at && 
-                new Date(t.completed_at).toDateString() === today
-            ).length;
-            
-            const completedWeek = filteredTasks.filter(t => 
-                t.status === 'done' && 
-                t.completed_at && 
-                new Date(t.completed_at) >= weekAgo
-            ).length;
+        document.getElementById('filter-agent').addEventListener('change', (e) => {
+            currentFilters.agent = e.target.value;
+            renderTasks();
+        });
 
-            const activeAgents = new Set(
-                filteredTasks
-                    .filter(t => t.status === 'in-progress' || t.status === 'in_progress')
-                    .map(t => t.agent)
-            ).size;
+        document.getElementById('filter-project').addEventListener('change', (e) => {
+            currentFilters.project = e.target.value;
+            renderTasks();
+        });
 
-            statsBar.innerHTML = `
-                <div class="stat">
-                    <div class="stat-value">${filteredTasks.length}</div>
-                    <div class="stat-label">Total Tasks</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">${todoCount}</div>
-                    <div class="stat-label">To Do</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">${progressCount}</div>
-                    <div class="stat-label">In Progress</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value ${blockedCount > 0 ? 'warning' : ''}">${blockedCount}</div>
-                    <div class="stat-label">Blocked</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">${completedToday}</div>
-                    <div class="stat-label">Done Today</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">${completedWeek}</div>
-                    <div class="stat-label">Done This Week</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">${activeAgents}</div>
-                    <div class="stat-label">Active Agents</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">${stats.costToday || '$0.00'}</div>
-                    <div class="stat-label">Cost Today</div>
-                </div>
-            `;
-        }
+        document.getElementById('memory-search').addEventListener('input', (e) => {
+            memoryFilters.search = e.target.value;
+            renderMemory();
+        });
 
-        function formatTime(timestamp) {
-            const date = new Date(timestamp);
-            const now = new Date();
-            const diff = now - date;
-            
-            const minutes = Math.floor(diff / 60000);
-            const hours = Math.floor(minutes / 60);
-            const days = Math.floor(hours / 24);
-            
-            if (days > 0) return `${days}d ago`;
-            if (hours > 0) return `${hours}h ago`;
-            if (minutes > 0) return `${minutes}m ago`;
-            return 'just now';
-        }
-
-        function renderWatchdog() {
-            renderWatchdogStatus();
-            renderWatchdogMetrics();
-            renderWatchdogTimeline();
-            renderCrashHistory();
-        }
-
-        function renderWatchdogStatus() {
-            const container = document.getElementById('watchdogStatus');
-            
-            const statusClass = watchdog.status || 'healthy';
-            const gatewayStatus = watchdog.gateway === 'up' ? 'UP' : 'DOWN';
-            const gatewayIcon = watchdog.gateway === 'up' ? '🟢' : '🔴';
-            
-            let watchdogStatusText = 'Healthy';
-            let watchdogIcon = '✅';
-            
-            switch(statusClass) {
-                case 'unhealthy':
-                    watchdogStatusText = 'Unhealthy';
-                    watchdogIcon = '⚠️';
-                    break;
-                case 'crash_loop':
-                    watchdogStatusText = 'Crash Loop';
-                    watchdogIcon = '🔴';
-                    break;
-                case 'repairing':
-                    watchdogStatusText = 'Repairing';
-                    watchdogIcon = '🔧';
-                    break;
-                case 'manual_intervention':
-                    watchdogStatusText = 'Manual Intervention Needed';
-                    watchdogIcon = '🚨';
-                    break;
-            }
-            
-            container.innerHTML = `
-                <div class="status-indicator ${statusClass}">
-                    <div class="status-icon">${gatewayIcon}</div>
-                    <div class="status-label">Gateway Status</div>
-                    <div class="status-value">${gatewayStatus}</div>
-                </div>
-                <div class="status-indicator ${statusClass}">
-                    <div class="status-icon">${watchdogIcon}</div>
-                    <div class="status-label">Watchdog Status</div>
-                    <div class="status-value">${watchdogStatusText}</div>
-                </div>
-                <div class="config-info">
-                    <strong>Auto-Repair:</strong> ${watchdog.autoRepair ? '🟢 Enabled' : '🔴 Disabled'} | 
-                    <strong>Notifications:</strong> ${watchdog.notifications ? '🟢 Enabled' : '🔴 Disabled'}
-                    <br>
-                    <em>Toggle via CLI: edit <code>~/workspace/config/watchdog.json</code></em>
-                </div>
-            `;
-        }
-
-        function renderWatchdogMetrics() {
-            const container = document.getElementById('watchdogMetrics');
-            
-            const uptime = watchdog.uptime || '0m';
-            const crashes = watchdog.crashCount24h || 0;
-            const repairs = watchdog.repairAttempts24h || 0;
-            const lastCheck = watchdog.lastCheck ? formatTimeAgo(watchdog.lastCheck) : 'Never';
-            
-            const crashClass = crashes > 5 ? 'critical' : crashes > 0 ? 'warning' : '';
-            const repairClass = repairs > 3 ? 'warning' : '';
-            
-            container.innerHTML = `
-                <div class="watchdog-metric">
-                    <div class="watchdog-metric-value">${uptime}</div>
-                    <div class="watchdog-metric-label">Uptime</div>
-                </div>
-                <div class="watchdog-metric">
-                    <div class="watchdog-metric-value ${crashClass}">${crashes}</div>
-                    <div class="watchdog-metric-label">Crashes (24h)</div>
-                </div>
-                <div class="watchdog-metric">
-                    <div class="watchdog-metric-value ${repairClass}">${repairs}</div>
-                    <div class="watchdog-metric-label">Repairs (24h)</div>
-                </div>
-                <div class="watchdog-metric">
-                    <div class="watchdog-metric-value">${lastCheck}</div>
-                    <div class="watchdog-metric-label">Last Check</div>
-                </div>
-            `;
-        }
-
-        function renderWatchdogTimeline() {
-            const container = document.getElementById('watchdogTimeline');
-            const events = watchdog.recentEvents || [];
-            
-            if (events.length === 0) {
-                container.innerHTML = '<div class="loading">No events recorded</div>';
-                return;
-            }
-            
-            const eventIcons = {
-                'health_check': '💓',
-                'restart': '🔄',
-                'repair': '🔧',
-                'crash_loop': '🔴',
-                'recovery': '✅',
-                'error': '⚠️'
-            };
-            
-            container.innerHTML = events.slice().reverse().map(event => {
-                const icon = eventIcons[event.type] || '📝';
-                const levelClass = `event-level-${event.level}`;
-                const timeAgo = formatTimeAgo(event.timestamp);
-                
-                let detailsHtml = '';
-                if (event.details && Object.keys(event.details).length > 0) {
-                    detailsHtml = `<div class="event-details">${JSON.stringify(event.details, null, 2)}</div>`;
-                }
-                
-                return `
-                    <div class="timeline-event" onclick="this.classList.toggle('expanded')">
-                        <div class="event-icon">${icon}</div>
-                        <div class="event-content">
-                            <div class="event-header">
-                                <span class="event-type ${levelClass}">${event.type.replace('_', ' ')}</span>
-                                <span class="event-time">${timeAgo}</span>
-                            </div>
-                            <div class="event-message">${event.message}</div>
-                            ${detailsHtml}
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function renderCrashHistory() {
-            const container = document.getElementById('crashHistory');
-            const events = watchdog.recentEvents || [];
-            
-            const now = new Date();
-            const crashesByDay = {};
-            
-            for (let i = 6; i >= 0; i--) {
-                const date = new Date(now);
-                date.setDate(date.getDate() - i);
-                const dateStr = date.toISOString().split('T')[0];
-                crashesByDay[dateStr] = 0;
-            }
-            
-            events.forEach(event => {
-                if (event.type === 'restart' || event.type === 'crash_loop') {
-                    const eventDate = new Date(event.timestamp).toISOString().split('T')[0];
-                    if (crashesByDay.hasOwnProperty(eventDate)) {
-                        crashesByDay[eventDate]++;
-                    }
-                }
-            });
-            
-            const maxCrashes = Math.max(...Object.values(crashesByDay), 1);
-            
-            container.innerHTML = Object.entries(crashesByDay).map(([date, count]) => {
-                const dateObj = new Date(date);
-                const label = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                const height = maxCrashes > 0 ? (count / maxCrashes) * 150 : 10;
-                const hasClass = count > 0 ? 'has-crashes' : '';
-                
-                return `
-                    <div class="crash-bar">
-                        <div class="crash-bar-visual ${hasClass}" style="height: ${height}px; position: relative;">
-                            ${count > 0 ? `<span class="crash-bar-count">${count}</span>` : ''}
-                        </div>
-                        <div class="crash-bar-label">${label}</div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function formatTimeAgo(isoString) {
-            const date = new Date(isoString);
-            const now = new Date();
-            const diff = now - date;
-            
-            const seconds = Math.floor(diff / 1000);
-            const minutes = Math.floor(seconds / 60);
-            const hours = Math.floor(minutes / 60);
-            const days = Math.floor(hours / 24);
-            
-            if (days > 0) return `${days}d ago`;
-            if (hours > 0) return `${hours}h ago`;
-            if (minutes > 0) return `${minutes}m ago`;
-            return 'just now';
-        }
+        document.getElementById('memory-category').addEventListener('change', (e) => {
+            memoryFilters.category = e.target.value;
+            renderMemory();
+        });
 
         function refreshDashboard() {
             const btn = document.getElementById('refresh-btn');
             btn.classList.add('spinning');
-            loadAllData().then(() => {
+            loadData().then(() => {
                 setTimeout(() => btn.classList.remove('spinning'), 600);
             });
         }
+
+        loadData();
+        setInterval(() => loadData(), 60000);
     </script>
 </body>
 </html>
