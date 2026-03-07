@@ -1346,35 +1346,30 @@
             if (!watchdogData) return;
 
             // Update status cards
-            if (watchdogData.gateway) {
-                document.getElementById('watchdog-gateway-status').textContent = 
-                    watchdogData.gateway.status === 'online' ? '🟢 Online' : '🔴 Offline';
-                
-                if (watchdogData.gateway.uptime_since) {
-                    document.getElementById('watchdog-uptime').textContent = 
-                        calculateUptime(watchdogData.gateway.uptime_since);
-                }
+            const gwUp = watchdogData.status === 'healthy' || watchdogData.gateway === 'up';
+            document.getElementById('watchdog-gateway-status').textContent = 
+                gwUp ? '🟢 Online' : '🔴 Offline';
+            
+            if (watchdogData.uptime) {
+                document.getElementById('watchdog-uptime').textContent = watchdogData.uptime;
             }
 
-            if (watchdogData.stats) {
-                document.getElementById('watchdog-crash-count').textContent = 
-                    watchdogData.stats.crashes_24h || 0;
-                document.getElementById('watchdog-repair-count').textContent = 
-                    watchdogData.stats.repairs_24h || 0;
-            }
+            document.getElementById('watchdog-crash-count').textContent = 
+                watchdogData.crashCount24h || 0;
+            document.getElementById('watchdog-repair-count').textContent = 
+                watchdogData.repairAttempts24h || 0;
 
-            if (watchdogData.config) {
-                document.getElementById('watchdog-auto-repair').checked = 
-                    watchdogData.config.auto_repair || false;
-                document.getElementById('watchdog-notifications').checked = 
-                    watchdogData.config.notifications || false;
-            }
+            document.getElementById('watchdog-auto-repair').checked = 
+                watchdogData.autoRepair || false;
+            document.getElementById('watchdog-notifications').checked = 
+                watchdogData.notifications || false;
 
             // Update events timeline
             const eventsContainer = document.getElementById('watchdog-events');
-            if (watchdogData.events && watchdogData.events.length > 0) {
-                eventsContainer.innerHTML = watchdogData.events
-                    .slice(0, 20) // Show last 20 events
+            const events = watchdogData.recentEvents || watchdogData.events || [];
+            if (events.length > 0) {
+                eventsContainer.innerHTML = events
+                    .slice(-20).reverse() // Show last 20 events, newest first
                     .map(event => {
                         const levelClass = `level-${event.level || 'info'}`;
                         return `
