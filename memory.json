@@ -1,526 +1,167 @@
-{
-  "generated": 1772757961781,
-  "total": 65,
-  "entries": [
-    {
-      "title": "2026 03 05",
-      "category": "lessons",
-      "file": "2026-03-05.md",
-      "date": "2026-03-05",
-      "modified": 1772697636256,
-      "preview": "# lessons \u2014 2026-03-05"
-    },
-    {
-      "title": "2026 03 05",
-      "category": "preferences",
-      "file": "2026-03-05.md",
-      "date": "2026-03-05",
-      "modified": 1772697626402,
-      "preview": "# preferences \u2014 2026-03-05"
-    },
-    {
-      "title": "2026 03 05",
-      "category": "projects",
-      "file": "2026-03-05.md",
-      "date": "2026-03-05",
-      "modified": 1772697626401,
-      "preview": "# projects \u2014 2026-03-05"
-    },
-    {
-      "title": "2026 03 05",
-      "category": "decisions",
-      "file": "2026-03-05.md",
-      "date": "2026-03-05",
-      "modified": 1772697626398,
-      "preview": "# decisions \u2014 2026-03-05"
-    },
-    {
-      "title": "2026 03 04",
-      "category": "decisions",
-      "file": "2026-03-04.md",
-      "date": "2026-03-05",
-      "modified": 1772697619118,
-      "preview": "# decisions \u2014 [[projects/2026-03-04]]"
-    },
-    {
-      "title": "2026 03 04",
-      "category": "lessons",
-      "file": "2026-03-04.md",
-      "date": "2026-03-05",
-      "modified": 1772697619117,
-      "preview": "# lessons \u2014 [[projects/2026-03-04]]"
-    },
-    {
-      "title": "2026 03 04",
-      "category": "preferences",
-      "file": "2026-03-04.md",
-      "date": "2026-03-05",
-      "modified": 1772697619111,
-      "preview": "# preferences \u2014 2026-03-04"
-    },
-    {
-      "title": "2026 03 04",
-      "category": "projects",
-      "file": "2026-03-04.md",
-      "date": "2026-03-05",
-      "modified": 1772697619106,
-      "preview": "# projects \u2014 [[projects/2026-03-04]]"
-    },
-    {
-      "title": "2026 03 04",
-      "category": "commitments",
-      "file": "2026-03-04.md",
-      "date": "2026-03-05",
-      "modified": 1772697619099,
-      "preview": "# commitments \u2014 [[projects/2026-03-04]]"
-    },
-    {
-      "title": "Session Recap Protocol",
-      "category": "lessons",
-      "file": "session-recap-protocol.md",
-      "date": "2026-03-05",
-      "modified": 1772686776775,
-      "preview": "# Session Recap Protocol"
-    },
-    {
-      "title": "task-dashboard-accuracy",
-      "category": "lessons",
-      "file": "task-dashboard-accuracy.md",
-      "date": "2026-03-05",
-      "modified": 1772686749514,
-      "preview": "The task dashboard (task-dashboard-eosin.vercel.app) is Andy's primary visibility into work status. Accuracy is non-negotiable. Rules: (1) Update task status when starting work (--status in-progress),"
-    },
-    {
-      "title": "use-cheapest-model-that-works",
-      "category": "preferences",
-      "file": "use-cheapest-model-that-works.md",
-      "date": "2026-03-05",
-      "modified": 1772686738512,
-      "preview": "Default to the most cost-effective model that can handle the task. Only escalate to more expensive models (Opus, o1) when complexity demands it."
-    },
-    {
-      "title": "log-decisions-with-clawvault",
-      "category": "preferences",
-      "file": "log-decisions-with-clawvault.md",
-      "date": "2026-03-05",
-      "modified": 1772686737181,
-      "preview": "Important decisions should be logged with ClawVault for future reference. Helps maintain continuity across sessions and model switches."
-    },
-    {
-      "title": "heartbeat-visibility",
-      "category": "preferences",
-      "file": "heartbeat-visibility.md",
-      "date": "2026-03-05",
-      "modified": 1772686735926,
-      "preview": "Andy wants HEARTBEAT_OK acknowledgments. He likes seeing that background processes and cron jobs are running as expected."
-    },
-    {
-      "title": "show-costs-for-api-heavy-work",
-      "category": "preferences",
-      "file": "show-costs-for-api-heavy-work.md",
-      "date": "2026-03-05",
-      "modified": 1772686734693,
-      "preview": "When work involves significant API usage or costs, show estimated costs upfront. Andy wants visibility into resource usage."
-    },
-    {
-      "title": "practical-solutions-over-theory",
-      "category": "preferences",
-      "file": "practical-solutions-over-theory.md",
-      "date": "2026-03-05",
-      "modified": 1772686733447,
-      "preview": "Andy prefers practical, actionable solutions over theoretical explanations. Direct, hands-on approaches. No over-explaining simple tasks."
-    },
-    {
-      "title": "confirm-before-destructive-actions",
-      "category": "preferences",
-      "file": "confirm-before-destructive-actions.md",
-      "date": "2026-03-05",
-      "modified": 1772686732324,
-      "preview": "Andy requires confirmation before any destructive actions (file deletions, rm -rf, system changes, credential modifications). Never auto-execute destructive commands."
-    },
-    {
-      "title": "Commitment Tracking Protocol",
-      "category": "lessons",
-      "file": "commitment-tracking-protocol.md",
-      "date": "2026-03-05",
-      "modified": 1772686707199,
-      "preview": "# Commitment Tracking Protocol"
-    },
-    {
-      "title": "Task dashboard must reflect reality",
-      "category": "lessons",
-      "file": "task-dashboard-must-reflect-reality.md",
-      "date": "2026-03-05",
-      "modified": 1772686347346,
-      "preview": "The task dashboard is only useful if it's accurate. RULES: 1) Never leave tasks in-progress if work has stopped \u2014 move to done or back to backlog. 2) Update status immediately when work starts, finish"
-    },
-    {
-      "title": "Keep openclaw-gateway.service alongside watchdog",
-      "category": "decisions",
-      "file": "keep-openclaw-gatewayservice-alongside-watchdog.md",
-      "date": "2026-03-04",
-      "modified": 1772666670615,
-      "preview": "Andy confirmed: openclaw-gateway.service should run alongside openclaw-watchdog.service. Do NOT remove or disable it, even if doctor suggests cleanup. Both services are intentional."
-    },
-    {
-      "title": "Kustwacht Operations",
-      "category": "projects",
-      "file": "kustwacht-operations.md",
-      "date": "2026-03-04",
-      "modified": 1772665882633,
-      "preview": "status: active"
-    },
-    {
-      "title": "OpenClaw Setup",
-      "category": "projects",
-      "file": "openclaw-setup.md",
-      "date": "2026-03-04",
-      "modified": 1772665882622,
-      "preview": "status: active"
-    },
-    {
-      "title": "n8n Workflows",
-      "category": "projects",
-      "file": "n8n-workflows.md",
-      "date": "2026-03-04",
-      "modified": 1772665882612,
-      "preview": "status: active"
-    },
-    {
-      "title": "SXM Cams",
-      "category": "projects",
-      "file": "sxm-cams.md",
-      "date": "2026-03-04",
-      "modified": 1772665882598,
-      "preview": "status: paused"
-    },
-    {
-      "title": "Dominica Duty-Free Proposal",
-      "category": "projects",
-      "file": "dominica-duty-free.md",
-      "date": "2026-03-04",
-      "modified": 1772665882582,
-      "preview": "status: active"
-    },
-    {
-      "title": "Delegation-first operating model",
-      "category": "decisions",
-      "file": "delegation-first-operating-model.md",
-      "date": "2026-03-04",
-      "modified": 1772665837605,
-      "preview": "Andy confirmed: Opus orchestrates, Sonnet sub-agents execute. Only use Opus directly for complex reasoning, architecture, or sensitive ops. If multiple sub-agents can handle it equally well, always de"
-    },
-    {
-      "title": "openclaw-gateway and watchdog coexistence",
-      "category": "decisions",
-      "file": "openclaw-gateway-and-watchdog-coexistence.md",
-      "date": "2026-03-04",
-      "modified": 1772665056745,
-      "preview": "openclaw-gateway.service and the watchdog service must work alongside each other. They are complementary services, not replacements. Both need to be running."
-    },
-    {
-      "title": "ClawVault full activation",
-      "category": "decisions",
-      "file": "clawvault-full-activation.md",
-      "date": "2026-03-04",
-      "modified": 1772660280475,
-      "preview": "Activated ClawVault to full potential. Phase 1 (done): observe pipeline (nightly 04:00 AST), reflect pipeline (Sunday 05:00 AST), entity linking (126 nodes/169 edges), ClawVault OpenClaw plugin (auto-"
-    },
-    {
-      "title": "2026 03 02",
-      "category": "projects",
-      "file": "2026-03-02.md",
-      "date": "2026-03-04",
-      "modified": 1772660188823,
-      "preview": "# projects \u2014 [[projects/2026-03-02]]"
-    },
-    {
-      "title": "2026 03 03",
-      "category": "projects",
-      "file": "2026-03-03.md",
-      "date": "2026-03-04",
-      "modified": 1772660188823,
-      "preview": "# projects \u2014 [[projects/2026-03-03]]"
-    },
-    {
-      "title": "2026 03 01",
-      "category": "projects",
-      "file": "2026-03-01.md",
-      "date": "2026-03-04",
-      "modified": 1772660188822,
-      "preview": "# projects \u2014 [[projects/2026-03-01]]"
-    },
-    {
-      "title": "2026 03 02",
-      "category": "preferences",
-      "file": "2026-03-02.md",
-      "date": "2026-03-04",
-      "modified": 1772660188821,
-      "preview": "# preferences \u2014 [[projects/2026-03-02]]"
-    },
-    {
-      "title": "2026 03 03",
-      "category": "preferences",
-      "file": "2026-03-03.md",
-      "date": "2026-03-04",
-      "modified": 1772660188821,
-      "preview": "# preferences \u2014 [[projects/2026-03-03]]"
-    },
-    {
-      "title": "2026 03 01",
-      "category": "preferences",
-      "file": "2026-03-01.md",
-      "date": "2026-03-04",
-      "modified": 1772660188820,
-      "preview": "# preferences \u2014 [[projects/2026-03-01]]"
-    },
-    {
-      "title": "Ernie Sambre",
-      "category": "people",
-      "file": "ernie-sambre.md",
-      "date": "2026-03-04",
-      "modified": 1772660188819,
-      "preview": "# Ernie Sambre"
-    },
-    {
-      "title": "2026 03 03",
-      "category": "lessons",
-      "file": "2026-03-03.md",
-      "date": "2026-03-04",
-      "modified": 1772660188814,
-      "preview": "# lessons \u2014 [[projects/2026-03-03]]"
-    },
-    {
-      "title": "2026 03 03",
-      "category": "decisions",
-      "file": "2026-03-03.md",
-      "date": "2026-03-04",
-      "modified": 1772660188802,
-      "preview": "# decisions \u2014 2026-03-03"
-    },
-    {
-      "title": "2026 03 02",
-      "category": "decisions",
-      "file": "2026-03-02.md",
-      "date": "2026-03-04",
-      "modified": 1772660188801,
-      "preview": "# decisions \u2014 [[projects/2026-03-02]]"
-    },
-    {
-      "title": "2026 03 03",
-      "category": "commitments",
-      "file": "2026-03-03.md",
-      "date": "2026-03-04",
-      "modified": 1772660188798,
-      "preview": "# commitments \u2014 [[projects/2026-03-03]]"
-    },
-    {
-      "title": "Mark tasks done when solved",
-      "category": "lessons",
-      "file": "mark-tasks-done-when-solved.md",
-      "date": "2026-03-04",
-      "modified": 1772587346248,
-      "preview": "FAILURE: n8n Google Drive + Calendar workflows were built and working (webhook at n8n-andy.xyz/webhook/openclaw-google), but the corresponding dashboard tasks stayed 'blocked' for days. Root cause: so"
-    },
-    {
-      "title": "Always update task dashboard",
-      "category": "lessons",
-      "file": "always-update-task-dashboard.md",
-      "date": "2026-03-04",
-      "modified": 1772586480402,
-      "preview": "FAILURE PATTERN: Repeatedly forgot to update task-dashboard when starting/completing work. FIX: Hard rule added to SOUL.md Task Protocol \u2014 every task start/complete/block MUST trigger a task-dashboard"
-    },
-    {
-      "title": "n8n-google-webhook-live",
-      "category": "decisions",
-      "file": "n8n-google-webhook-live.md",
-      "date": "2026-03-04",
-      "modified": 1772582818041,
-      "preview": "Single n8n webhook at https://n8n-andy.xyz/webhook/openclaw-google handles both Calendar and Drive. Auth via X-Api-Token header. Token stored in ~/.openclaw/.env as N8N_WEBHOOK_TOKEN. Calendar actions"
-    },
-    {
-      "title": "Finch Option A implementation",
-      "category": "lessons",
-      "file": "finch-option-a-implementation.md",
-      "date": "2026-03-03",
-      "modified": 1772543218041,
-      "preview": "Implemented conservative memory automation (Option A):"
-    },
-    {
-      "title": "Memory architecture patterns (Finch guide)",
-      "category": "decisions",
-      "file": "memory-architecture-patterns-finch-guide.md",
-      "date": "2026-03-03",
-      "modified": 1772542211378,
-      "preview": "Five core patterns from FinchInSlc memory guide:"
-    },
-    {
-      "title": "2-layer cron implementation",
-      "category": "lessons",
-      "file": "2-layer-cron-implementation.md",
-      "date": "2026-03-03",
-      "modified": 1772542199093,
-      "preview": "Pattern: All recurring LLM crons should use 2-layer architecture."
-    },
-    {
-      "title": "2-layer cron pattern",
-      "category": "decisions",
-      "file": "2-layer-cron-pattern.md",
-      "date": "2026-03-03",
-      "modified": 1772534558870,
-      "preview": "All recurring crons should use a 2-layer approach: Layer 1 is a cheap bash pre-check that determines if there's actual work to do. Layer 2 is the LLM call, only triggered when the pre-check finds some"
-    },
-    {
-      "title": "always-read-openclaw-docs-before-config",
-      "category": "lessons",
-      "file": "always-read-openclaw-docs-before-config.md",
-      "date": "2026-03-02",
-      "modified": 1772472587349,
-      "preview": "Before making ANY OpenClaw config changes: read the docs at https://docs.openclaw.ai first. Use 'openclaw config set <path> <value>' for changes (validates + creates backup). Do NOT edit openclaw.json"
-    },
-    {
-      "title": "kanban-delegation",
-      "category": "decisions",
-      "file": "kanban-delegation.md",
-      "date": "2026-03-01",
-      "modified": 1772408283619,
-      "preview": "Kanban board (task-dashboard-eosin.vercel.app) is Max's work tracker. Todoist is Andy's personal task list. Tasks must be assigned to proper agents: max (planning/strategy), worker (routine tasks), re"
-    },
-    {
-      "title": "voice-identity-alice",
-      "category": "decisions",
-      "file": "voice-identity-alice.md",
-      "date": "2026-03-01",
-      "modified": 1772408281916,
-      "preview": "Max's TTS voice is Alice (ElevenLabs ID: Xb7hH8MSUJpSbSDYk0k2). British, clear, engaging. Andy chose from 6 female voice samples. Note: OpenClaw built-in TTS tool ignores config voiceId \u2014 must call El"
-    },
-    {
-      "title": "sxm-cams-dashboard",
-      "category": "decisions",
-      "file": "sxm-cams-dashboard.md",
-      "date": "2026-03-01",
-      "modified": 1772408280134,
-      "preview": "SXM Webcam Dashboard deployed at https://cams.n8n-andy.xyz"
-    },
-    {
-      "title": "voice-alice",
-      "category": "decisions",
-      "file": "voice-alice.md",
-      "date": "2026-03-01",
-      "modified": 1772406384731,
-      "preview": "Max's TTS voice is Alice (ElevenLabs ID: Xb7hH8MSUJpSbSDYk0k2). British, clear, engaging. Note: OpenClaw's built-in TTS tool ignores the config voiceId \u2014 use direct ElevenLabs API calls for correct vo"
-    },
-    {
-      "title": "delegate-dont-do",
-      "category": "lessons",
-      "file": "delegate-dont-do.md",
-      "date": "2026-03-01",
-      "modified": 1772402853871,
-      "preview": "I (Max/Opus) was doing ALL tasks myself \u2014 coding, file ops, research, everything. Andy corrected this. The kanban board should show work distributed across agents:"
-    },
-    {
-      "title": "daily-log-protocol",
-      "category": "lessons",
-      "file": "daily-log-protocol.md",
-      "date": "2026-03-01",
-      "modified": 1772394135556,
-      "preview": "Write to DAILY_LOG.md immediately after every significant action. Don't batch at session end. Log what was done, decisions made, and any issues encountered."
-    },
-    {
-      "title": "himalaya-removed-agentmail-only",
-      "category": "decisions",
-      "file": "himalaya-removed-agentmail-only.md",
-      "date": "2026-03-01",
-      "modified": 1772393933255,
-      "preview": "Removed himalaya CLI email client. All email is handled via agentmail API (maxine@agentmail.to). No IMAP/SMTP needed. Deleted: himalaya binary, config, gmail-oauth.json, google-oauth-client.json. andy"
-    },
-    {
-      "title": "dm-disabled-workspace-only",
-      "category": "decisions",
-      "file": "dm-disabled-workspace-only.md",
-      "date": "2026-02-28",
-      "modified": 1772294936937,
-      "preview": "Disabled Telegram DM policy (dmPolicy: disabled). All communication now goes through Max Workspace group (-1003709913328) General topic only. No more split between DM and group chat."
-    },
-    {
-      "title": "workspace-group-topics",
-      "category": "decisions",
-      "file": "workspace-group-topics.md",
-      "date": "2026-02-28",
-      "modified": 1772290427474,
-      "preview": "Telegram workspace group (-1003709913328) topics: General (default), \ud83d\udd14 Briefings & Heartbeats (98), \u2693 Coast Guard (99), \ud83c\udfea Valley Estate (100), \ud83c\udf34 Dominica (101), \ud83d\udd27 Infrastructure (102). Andy writes in "
-    },
-    {
-      "title": "gmail-forwarding-approved",
-      "category": "decisions",
-      "file": "gmail-forwarding-approved.md",
-      "date": "2026-02-28",
-      "modified": 1772290426235,
-      "preview": "Gmail forwarding from jsambre@gmail.com to maxine@agentmail.to confirmed and approved on Feb 28 2026. Andy still needs to enable it on Gmail side (Settings \u2192 Forwarding)."
-    },
-    {
-      "title": "cron-job-schedule-feb28",
-      "category": "decisions",
-      "file": "cron-job-schedule-feb28.md",
-      "date": "2026-02-28",
-      "modified": 1772290424913,
-      "preview": "Cron jobs as of Feb 28 2026: heartbeat (every hour except 7am AST, haiku, delivers to workspace group topic 98), morning-briefing (7am AST, haiku, includes heartbeat+weather+todoist+commitments, deliv"
-    },
-    {
-      "title": "workspace-git-backup",
-      "category": "decisions",
-      "file": "workspace-git-backup.md",
-      "date": "2026-02-28",
-      "modified": 1772290423604,
-      "preview": "Workspace backed up to private GitHub repo: github.com/3dAndy84/workspace. Daily backup cron at midnight AST exports cron jobs + openclaw config, commits and pushes. PAT embedded in remote URL. .gitig"
-    },
-    {
-      "title": "clawvault-path-fix",
-      "category": "decisions",
-      "file": "clawvault-path-fix.md",
-      "date": "2026-02-28",
-      "modified": 1772290422286,
-      "preview": "CLAWVAULT_PATH=/home/clawd/workspace/memory added to ~/.openclaw/.env. Required for clawvault CLI to work in cron jobs and heartbeats."
-    },
-    {
-      "title": "todoist-single-capture-point",
-      "category": "decisions",
-      "file": "todoist-single-capture-point.md",
-      "date": "2026-02-28",
-      "modified": 1772290420892,
-      "preview": "Todoist is the single task capture point. Projects: Inbox, Valley Estate, Coast Guard, Dominica. Any task/reminder/todo goes straight to Todoist in the right project. API key in .env, script at ~/.age"
-    },
-    {
-      "title": "consolidated-to-workspace-group",
-      "category": "decisions",
-      "file": "consolidated-to-workspace-group.md",
-      "date": "2026-02-28",
-      "modified": 1772290239801,
-      "preview": "Consolidated all comms to Telegram workspace group (-1003709913328) with topics. General topic is default for all interaction. Project topics (Coast Guard, Valley Estate, Dominica, Infrastructure) are"
-    },
-    {
-      "title": "google-drive-write-access",
-      "category": "lessons",
-      "file": "google-drive-write-access.md",
-      "date": "2026-02-28",
-      "modified": 1772282211895,
-      "preview": "Google Drive service account has WRITE access (confirmed Feb 27, 2026). Can upload files, not just read."
-    },
-    {
-      "title": "systemd-gateway-service",
-      "category": "lessons",
-      "file": "systemd-gateway-service.md",
-      "date": "2026-02-28",
-      "modified": 1772282210478,
-      "preview": "The openclaw-gateway.service systemd unit runs alongside the watchdog intentionally. Do NOT disable or remove it. Doctor cleanup hint should be disregarded."
-    },
-    {
-      "title": "Doctor Suppress Known Warnings",
-      "category": "lessons",
-      "file": "doctor-suppress-known-warnings.md",
-      "date": "2026-02-26",
-      "modified": 1772101859696,
-      "preview": "# Doctor: Suppress Known Warnings"
-    }
-  ]
-}
+{"generated":1772894122419,"total":83,"entries":[
+  {"title":"2 layer cron pattern","category":"decisions","file":"2-layer-cron-pattern.md","date":"2026-03-03","modified":1772534558000,"preview":"All recurring crons should use a 2-layer approach: Layer 1 is a cheap bash pre-check that determines if there's actual work to do. Layer 2 is the LLM call, only triggered when the pre-check finds some "}
+,
+  {"title":"2026 03 02","category":"decisions","file":"2026-03-02.md","date":"2026-03-02","modified":1772660188000,"preview":"# decisions — [[projects/2026-03-02]] "}
+,
+  {"title":"2026 03 03","category":"decisions","file":"2026-03-03.md","date":"2026-03-03","modified":1772660188000,"preview":"# decisions — 2026-03-03 "}
+,
+  {"title":"2026 03 04","category":"decisions","file":"2026-03-04.md","date":"2026-03-04","modified":1772697619000,"preview":"# decisions — [[projects/2026-03-04]] "}
+,
+  {"title":"2026 03 05","category":"decisions","file":"2026-03-05.md","date":"2026-03-05","modified":1772784056000,"preview":"# decisions — 2026-03-05 "}
+,
+  {"title":"clawvault full activation","category":"decisions","file":"clawvault-full-activation.md","date":"2026-03-04","modified":1772660280000,"preview":"Activated ClawVault to full potential. Phase 1 (done): observe pipeline (nightly 04:00 AST), reflect pipeline (Sunday 05:00 AST), entity linking (126 nodes/169 edges), ClawVault OpenClaw plugin (auto- "}
+,
+  {"title":"clawvault path fix","category":"decisions","file":"clawvault-path-fix.md","date":"2026-02-28","modified":1772290422000,"preview":"CLAWVAULT_PATH=/home/clawd/workspace/memory added to ~/.openclaw/.env. Required for clawvault CLI to work in cron jobs and heartbeats. "}
+,
+  {"title":"consolidated to workspace group","category":"decisions","file":"consolidated-to-workspace-group.md","date":"2026-02-28","modified":1772290239000,"preview":"Consolidated all comms to Telegram workspace group (-1003709913328) with topics. General topic is default for all interaction. Project topics (Coast Guard, Valley Estate, Dominica, Infrastructure) are "}
+,
+  {"title":"cron job schedule feb28","category":"decisions","file":"cron-job-schedule-feb28.md","date":"2026-02-28","modified":1772290424000,"preview":"Cron jobs as of Feb 28 2026: heartbeat (every hour except 7am AST, haiku, delivers to workspace group topic 98), morning-briefing (7am AST, haiku, includes heartbeat+weather+todoist+commitments, deliv "}
+,
+  {"title":"delegation first operating model","category":"decisions","file":"delegation-first-operating-model.md","date":"2026-03-04","modified":1772665837000,"preview":"Andy confirmed: Opus orchestrates, Sonnet sub-agents execute. Only use Opus directly for complex reasoning, architecture, or sensitive ops. If multiple sub-agents can handle it equally well, always de "}
+,
+  {"title":"dm disabled workspace only","category":"decisions","file":"dm-disabled-workspace-only.md","date":"2026-02-28","modified":1772294936000,"preview":"Disabled Telegram DM policy (dmPolicy: disabled). All communication now goes through Max Workspace group (-1003709913328) General topic only. No more split between DM and group chat. "}
+,
+  {"title":"gmail forwarding approved","category":"decisions","file":"gmail-forwarding-approved.md","date":"2026-02-28","modified":1772290426000,"preview":"Gmail forwarding from jsambre@gmail.com to maxine@agentmail.to confirmed and approved on Feb 28 2026. Andy still needs to enable it on Gmail side (Settings → Forwarding). "}
+,
+  {"title":"himalaya removed agentmail only","category":"decisions","file":"himalaya-removed-agentmail-only.md","date":"2026-03-01","modified":1772393933000,"preview":"Removed himalaya CLI email client. All email is handled via agentmail API (maxine@agentmail.to). No IMAP/SMTP needed. Deleted: himalaya binary, config, gmail-oauth.json, google-oauth-client.json. andy "}
+,
+  {"title":"kanban delegation","category":"decisions","file":"kanban-delegation.md","date":"2026-03-01","modified":1772408283000,"preview":"Kanban board (task-dashboard-eosin.vercel.app) is Max's work tracker. Todoist is Andy's personal task list. Tasks must be assigned to proper agents: max (planning/strategy), worker (routine tasks), re "}
+,
+  {"title":"keep openclaw gatewayservice alongside watchdog","category":"decisions","file":"keep-openclaw-gatewayservice-alongside-watchdog.md","date":"2026-03-04","modified":1772666670000,"preview":"Andy confirmed: openclaw-gateway.service should run alongside openclaw-watchdog.service. Do NOT remove or disable it, even if doctor suggests cleanup. Both services are intentional. "}
+,
+  {"title":"max workspace telegram topics","category":"decisions","file":"max-workspace-telegram-topics.md","date":"2026-03-06","modified":1772811757000,"preview":"Forum topic IDs for Max Workspace group (-1003709913328): General = 1, Briefings & Heartbeats = 98, Coast Guard = 99, Valley Estate = 100, Infrastructure = 102, Dominica = 197, Personal = 1143 "}
+,
+  {"title":"memory architecture patterns finch guide","category":"decisions","file":"memory-architecture-patterns-finch-guide.md","date":"2026-03-03","modified":1772542211000,"preview":"Five core patterns from FinchInSlc memory guide: "}
+,
+  {"title":"mission control dashboard","category":"decisions","file":"mission-control-dashboard.md","date":"2026-03-07","modified":1772875841000,"preview":"The task-dashboard (task-dashboard-eosin.vercel.app) is now our single dashboard — renamed to Mission Control. Repo: 3dAndy84/task-dashboard. Deployed on Vercel, separate git repo at ~/workspace/das "}
+,
+  {"title":"n8n google webhook live","category":"decisions","file":"n8n-google-webhook-live.md","date":"2026-03-04","modified":1772582818000,"preview":"Single n8n webhook at https://n8n-andy.xyz/webhook/openclaw-google handles both Calendar and Drive. Auth via X-Api-Token header. Token stored in ~/.openclaw/.env as N8N_WEBHOOK_TOKEN. Calendar actions "}
+,
+  {"title":"openclaw gateway and watchdog coexistence","category":"decisions","file":"openclaw-gateway-and-watchdog-coexistence.md","date":"2026-03-04","modified":1772665056000,"preview":"openclaw-gateway.service and the watchdog service must work alongside each other. They are complementary services, not replacements. Both need to be running. "}
+,
+  {"title":"sxm cams dashboard","category":"decisions","file":"sxm-cams-dashboard.md","date":"2026-03-01","modified":1772408280000,"preview":"SXM Webcam Dashboard deployed at https://cams.n8n-andy.xyz "}
+,
+  {"title":"todoist single capture point","category":"decisions","file":"todoist-single-capture-point.md","date":"2026-02-28","modified":1772290420000,"preview":"Todoist is the single task capture point. Projects: Inbox, Valley Estate, Coast Guard, Dominica. Any task/reminder/todo goes straight to Todoist in the right project. API key in .env, script at ~/.age "}
+,
+  {"title":"voice alice","category":"decisions","file":"voice-alice.md","date":"2026-03-01","modified":1772406384000,"preview":"Max's TTS voice is Alice (ElevenLabs ID: Xb7hH8MSUJpSbSDYk0k2). British, clear, engaging. Note: OpenClaw's built-in TTS tool ignores the config voiceId — use direct ElevenLabs API calls for correct  "}
+,
+  {"title":"voice identity alice","category":"decisions","file":"voice-identity-alice.md","date":"2026-03-01","modified":1772408281000,"preview":"Max's TTS voice is Alice (ElevenLabs ID: Xb7hH8MSUJpSbSDYk0k2). British, clear, engaging. Andy chose from 6 female voice samples. Note: OpenClaw built-in TTS tool ignores config voiceId — must call  "}
+,
+  {"title":"workspace git backup","category":"decisions","file":"workspace-git-backup.md","date":"2026-02-28","modified":1772290423000,"preview":"Workspace backed up to private GitHub repo: github.com/3dAndy84/workspace. Daily backup cron at midnight AST exports cron jobs + openclaw config, commits and pushes. PAT embedded in remote URL. .gitig "}
+,
+  {"title":"workspace group topics","category":"decisions","file":"workspace-group-topics.md","date":"2026-02-28","modified":1772290427000,"preview":"Telegram workspace group (-1003709913328) topics: General (default), 🔔 Briefings & Heartbeats (98), ⚓ Coast Guard (99), 🏪 Valley Estate (100), 🌴 Dominica (101), 🔧 Infrastructure (102). A "}
+,
+  {"title":"2 layer cron implementation","category":"lessons","file":"2-layer-cron-implementation.md","date":"2026-03-03","modified":1772542199000,"preview":"Pattern: All recurring LLM crons should use 2-layer architecture. "}
+,
+  {"title":"2026 03 03","category":"lessons","file":"2026-03-03.md","date":"2026-03-03","modified":1772660188000,"preview":"# lessons — [[projects/2026-03-03]] "}
+,
+  {"title":"2026 03 04","category":"lessons","file":"2026-03-04.md","date":"2026-03-04","modified":1772697619000,"preview":"# lessons — [[projects/2026-03-04]] "}
+,
+  {"title":"2026 03 05","category":"lessons","file":"2026-03-05.md","date":"2026-03-05","modified":1772784070000,"preview":"# lessons — 2026-03-05 "}
+,
+  {"title":"2026 03 07","category":"lessons","file":"2026-03-07.md","date":"2026-03-07","modified":1772870425000,"preview":"# lessons — 2026-03-07 "}
+,
+  {"title":"always read openclaw docs before config","category":"lessons","file":"always-read-openclaw-docs-before-config.md","date":"2026-03-02","modified":1772472587000,"preview":"Before making ANY OpenClaw config changes: read the docs at https://docs.openclaw.ai first. Use 'openclaw config set <path> <value>' for changes (validates + creates backup). Do NOT edit openclaw.json "}
+,
+  {"title":"always update task dashboard","category":"lessons","file":"always-update-task-dashboard.md","date":"2026-03-04","modified":1772586480000,"preview":"FAILURE PATTERN: Repeatedly forgot to update task-dashboard when starting/completing work. FIX: Hard rule added to SOUL.md Task Protocol — every task start/complete/block MUST trigger a task-dashboa "}
+,
+  {"title":"commitment tracking protocol","category":"lessons","file":"commitment-tracking-protocol.md","date":"2026-03-05","modified":1772686707000,"preview":"# Commitment Tracking Protocol "}
+,
+  {"title":"daily log protocol","category":"lessons","file":"daily-log-protocol.md","date":"2026-03-01","modified":1772394135000,"preview":"Write to DAILY_LOG.md immediately after every significant action. Don't batch at session end. Log what was done, decisions made, and any issues encountered. "}
+,
+  {"title":"delegate dont do","category":"lessons","file":"delegate-dont-do.md","date":"2026-03-01","modified":1772402853000,"preview":"I (Max/Opus) was doing ALL tasks myself — coding, file ops, research, everything. Andy corrected this. The kanban board should show work distributed across agents: "}
+,
+  {"title":"doctor suppress known warnings","category":"lessons","file":"doctor-suppress-known-warnings.md","date":"2026-02-26","modified":1772101859000,"preview":"# Doctor: Suppress Known Warnings "}
+,
+  {"title":"finch option a implementation","category":"lessons","file":"finch-option-a-implementation.md","date":"2026-03-03","modified":1772543218000,"preview":"Implemented conservative memory automation (Option A): "}
+,
+  {"title":"google drive write access","category":"lessons","file":"google-drive-write-access.md","date":"2026-02-28","modified":1772282211000,"preview":"Google Drive service account has WRITE access (confirmed Feb 27, 2026). Can upload files, not just read. "}
+,
+  {"title":"mark tasks done when solved","category":"lessons","file":"mark-tasks-done-when-solved.md","date":"2026-03-04","modified":1772587346000,"preview":"FAILURE: n8n Google Drive + Calendar workflows were built and working (webhook at n8n-andy.xyz/webhook/openclaw-google), but the corresponding dashboard tasks stayed 'blocked' for days. Root cause: so "}
+,
+  {"title":"save before respond","category":"lessons","file":"save-before-respond.md","date":"2026-03-06","modified":1772833747000,"preview":"CRITICAL: When Andy tells me ANY factual information (names, IDs, preferences, structures, decisions, lists), I MUST save it to memory BEFORE responding. The order is: (1) save to file/ClawVault, (2)  "}
+,
+  {"title":"session recap protocol","category":"lessons","file":"session-recap-protocol.md","date":"2026-03-05","modified":1772686776000,"preview":"# Session Recap Protocol "}
+,
+  {"title":"systemd gateway service","category":"lessons","file":"systemd-gateway-service.md","date":"2026-02-28","modified":1772282210000,"preview":"The openclaw-gateway.service systemd unit runs alongside the watchdog intentionally. Do NOT disable or remove it. Doctor cleanup hint should be disregarded. "}
+,
+  {"title":"task dashboard accuracy","category":"lessons","file":"task-dashboard-accuracy.md","date":"2026-03-05","modified":1772686749000,"preview":"The task dashboard (task-dashboard-eosin.vercel.app) is Andy's primary visibility into work status. Accuracy is non-negotiable. Rules: (1) Update task status when starting work (--status in-progress), "}
+,
+  {"title":"task dashboard must reflect reality","category":"lessons","file":"task-dashboard-must-reflect-reality.md","date":"2026-03-05","modified":1772686347000,"preview":"The task dashboard is only useful if it's accurate. RULES: 1) Never leave tasks in-progress if work has stopped — move to done or back to backlog. 2) Update status immediately when work starts, fini "}
+,
+  {"title":"2026 03 03","category":"commitments","file":"2026-03-03.md","date":"2026-03-03","modified":1772660188000,"preview":"# commitments — [[projects/2026-03-03]] "}
+,
+  {"title":"2026 03 04","category":"commitments","file":"2026-03-04.md","date":"2026-03-04","modified":1772697619000,"preview":"# commitments — [[projects/2026-03-04]] "}
+,
+  {"title":"2026 03 07","category":"commitments","file":"2026-03-07.md","date":"2026-03-07","modified":1772870425000,"preview":"# commitments — 2026-03-07 "}
+,
+  {"title":"2026 03 01","category":"projects","file":"2026-03-01.md","date":"2026-03-01","modified":1772660188000,"preview":"# projects — [[projects/2026-03-01]] "}
+,
+  {"title":"2026 03 02","category":"projects","file":"2026-03-02.md","date":"2026-03-02","modified":1772660188000,"preview":"# projects — [[projects/2026-03-02]] "}
+,
+  {"title":"2026 03 03","category":"projects","file":"2026-03-03.md","date":"2026-03-03","modified":1772660188000,"preview":"# projects — [[projects/2026-03-03]] "}
+,
+  {"title":"2026 03 04","category":"projects","file":"2026-03-04.md","date":"2026-03-04","modified":1772697619000,"preview":"# projects — [[projects/2026-03-04]] "}
+,
+  {"title":"2026 03 05","category":"projects","file":"2026-03-05.md","date":"2026-03-05","modified":1772784056000,"preview":"# projects — 2026-03-05 "}
+,
+  {"title":"2026 03 06","category":"projects","file":"2026-03-06.md","date":"2026-03-06","modified":1772870407000,"preview":"# projects — 2026-03-06 "}
+,
+  {"title":"2026 03 07","category":"projects","file":"2026-03-07.md","date":"2026-03-07","modified":1772870425000,"preview":"# projects — 2026-03-07 "}
+,
+  {"title":"dominica duty free","category":"projects","file":"dominica-duty-free.md","date":"2026-03-04","modified":1772665882000,"preview":"# Dominica Duty-Free Proposal "}
+,
+  {"title":"kustwacht operations","category":"projects","file":"kustwacht-operations.md","date":"2026-03-04","modified":1772665882000,"preview":"# Kustwacht Operations "}
+,
+  {"title":"n8n workflows","category":"projects","file":"n8n-workflows.md","date":"2026-03-04","modified":1772665882000,"preview":"# n8n Workflows "}
+,
+  {"title":"openclaw setup","category":"projects","file":"openclaw-setup.md","date":"2026-03-04","modified":1772665882000,"preview":"# OpenClaw Setup "}
+,
+  {"title":"sxm cams","category":"projects","file":"sxm-cams.md","date":"2026-03-04","modified":1772665882000,"preview":"# SXM Cams "}
+,
+  {"title":"2026 03 01","category":"preferences","file":"2026-03-01.md","date":"2026-03-01","modified":1772660188000,"preview":"# preferences — [[projects/2026-03-01]] "}
+,
+  {"title":"2026 03 02","category":"preferences","file":"2026-03-02.md","date":"2026-03-02","modified":1772660188000,"preview":"# preferences — [[projects/2026-03-02]] "}
+,
+  {"title":"2026 03 03","category":"preferences","file":"2026-03-03.md","date":"2026-03-03","modified":1772660188000,"preview":"# preferences — [[projects/2026-03-03]] "}
+,
+  {"title":"2026 03 04","category":"preferences","file":"2026-03-04.md","date":"2026-03-04","modified":1772697619000,"preview":"# preferences — 2026-03-04 "}
+,
+  {"title":"2026 03 05","category":"preferences","file":"2026-03-05.md","date":"2026-03-05","modified":1772784056000,"preview":"# preferences — 2026-03-05 "}
+,
+  {"title":"2026 03 06","category":"preferences","file":"2026-03-06.md","date":"2026-03-06","modified":1772870412000,"preview":"# preferences — 2026-03-06 "}
+,
+  {"title":"2026 03 07","category":"preferences","file":"2026-03-07.md","date":"2026-03-07","modified":1772870425000,"preview":"# preferences — 2026-03-07 "}
+,
+  {"title":"confirm before destructive actions","category":"preferences","file":"confirm-before-destructive-actions.md","date":"2026-03-05","modified":1772686732000,"preview":"Andy requires confirmation before any destructive actions (file deletions, rm -rf, system changes, credential modifications). Never auto-execute destructive commands. "}
+,
+  {"title":"heartbeat visibility","category":"preferences","file":"heartbeat-visibility.md","date":"2026-03-05","modified":1772686735000,"preview":"Andy wants HEARTBEAT_OK acknowledgments. He likes seeing that background processes and cron jobs are running as expected. "}
+,
+  {"title":"log decisions with clawvault","category":"preferences","file":"log-decisions-with-clawvault.md","date":"2026-03-05","modified":1772686737000,"preview":"Important decisions should be logged with ClawVault for future reference. Helps maintain continuity across sessions and model switches. "}
+,
+  {"title":"practical solutions over theory","category":"preferences","file":"practical-solutions-over-theory.md","date":"2026-03-05","modified":1772686733000,"preview":"Andy prefers practical, actionable solutions over theoretical explanations. Direct, hands-on approaches. No over-explaining simple tasks. "}
+,
+  {"title":"show costs for api heavy work","category":"preferences","file":"show-costs-for-api-heavy-work.md","date":"2026-03-05","modified":1772686734000,"preview":"When work involves significant API usage or costs, show estimated costs upfront. Andy wants visibility into resource usage. "}
+,
+  {"title":"use cheapest model that works","category":"preferences","file":"use-cheapest-model-that-works.md","date":"2026-03-05","modified":1772686738000,"preview":"Default to the most cost-effective model that can handle the task. Only escalate to more expensive models (Opus, o1) when complexity demands it. "}
+,
+  {"title":"2026 03 02","category":"facts","file":"2026-03-02.md","date":"2026-03-02","modified":1772660188000,"preview":"# facts — [[projects/2026-03-02]] "}
+,
+  {"title":"2026 03 03","category":"facts","file":"2026-03-03.md","date":"2026-03-03","modified":1772660188000,"preview":"# facts — [[projects/2026-03-03]] "}
+,
+  {"title":"2026 03 04","category":"facts","file":"2026-03-04.md","date":"2026-03-04","modified":1772697619000,"preview":"# facts — [[projects/2026-03-04]] "}
+,
+  {"title":"2026 03 05","category":"facts","file":"2026-03-05.md","date":"2026-03-05","modified":1772784084000,"preview":"# facts — 2026-03-05 "}
+,
+  {"title":"2026 03 06","category":"facts","file":"2026-03-06.md","date":"2026-03-06","modified":1772870410000,"preview":"# facts — 2026-03-06 "}
+,
+  {"title":"2026 03 07","category":"facts","file":"2026-03-07.md","date":"2026-03-07","modified":1772870436000,"preview":"# facts — 2026-03-07 "}
+,
+  {"title":"agentmail access","category":"facts","file":"agentmail-access.md","date":"2026-02-28","modified":1772290430000,"preview":"AgentMail (maxine@agentmail.to) accessed via Node.js SDK. No IMAP — use AgentMailClient with API key. Threads list, get, getAttachment methods available. Himalaya config has stale Gmail creds, not a "}
+,
+  {"title":"clawvault task management","category":"facts","file":"clawvault-task-management.md","date":"2026-03-04","modified":1772665909000,"preview":"# ClawVault Task Management "}
+,
+  {"title":"task dashboard cleared","category":"facts","file":"task-dashboard-cleared.md","date":"2026-02-28","modified":1772290428000,"preview":"Task dashboard (task-dashboard-eosin.vercel.app) cleared of all demo tasks on Feb 28 2026. tasks.json is empty. Todoist is now the primary task system. "}
+,
+  {"title":"ernie sambre","category":"people","file":"ernie-sambre.md","date":"2026-03-04","modified":1772660188000,"preview":"# Ernie Sambre "}
+]}
