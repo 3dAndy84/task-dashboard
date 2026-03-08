@@ -1,4 +1,4 @@
-{"generated":1772906695985,"total":83,"entries":[
+{"generated":1772928293107,"total":84,"entries":[
   {"title":"2 layer cron pattern","category":"decisions","file":"2-layer-cron-pattern.md","date":"2026-03-03","modified":1772534558000,"preview":"All recurring crons should use a 2-layer approach: Layer 1 is a cheap bash pre-check that determines if there's actual work to do. Layer 2 is the LLM call, only triggered when the pre-check finds some "}
 ,
   {"title":"2026 03 02","category":"decisions","file":"2026-03-02.md","date":"2026-03-02","modified":1772660188000,"preview":"# decisions — [[projects/2026-03-02]] "}
@@ -36,6 +36,8 @@
   {"title":"mission control dashboard","category":"decisions","file":"mission-control-dashboard.md","date":"2026-03-07","modified":1772875841000,"preview":"The task-dashboard (task-dashboard-eosin.vercel.app) is now our single dashboard — renamed to Mission Control. Repo: 3dAndy84/task-dashboard. Deployed on Vercel, separate git repo at ~/workspace/das "}
 ,
   {"title":"n8n google webhook live","category":"decisions","file":"n8n-google-webhook-live.md","date":"2026-03-04","modified":1772582818000,"preview":"Single n8n webhook at https://n8n-andy.xyz/webhook/openclaw-google handles both Calendar and Drive. Auth via X-Api-Token header. Token stored in ~/.openclaw/.env as N8N_WEBHOOK_TOKEN. Calendar actions "}
+,
+  {"title":"n8n workflow protection rule","category":"decisions","file":"n8n-workflow-protection-rule.md","date":"2026-03-07","modified":1772909813000,"preview":"HARD RULE: Never edit working n8n workflows or delete workflows without explicit permission from Andy. This includes modifying nodes, changing parameters, deactivating, or removing workflows. Always a "}
 ,
   {"title":"openclaw gateway and watchdog coexistence","category":"decisions","file":"openclaw-gateway-and-watchdog-coexistence.md","date":"2026-03-04","modified":1772665056000,"preview":"openclaw-gateway.service and the watchdog service must work alongside each other. They are complementary services, not replacements. Both need to be running. "}
 ,
