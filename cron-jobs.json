@@ -1,83 +1,13 @@
 {
   "jobs": [
     {
-      "id": "dafc366d-e8b0-4867-8657-5ee5e14b632d",
-      "agentId": "main",
-      "sessionKey": "agent:main:main",
-      "name": "morning-briefing",
-      "enabled": true,
-      "createdAtMs": 1772283294696,
-      "updatedAtMs": 1772794922657,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 7 * * *",
-        "tz": "America/Lower_Princes"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Morning briefing for Andy. Three parts:\n\n**PART 1: HEARTBEAT (always include, even if everything is fine)**\n1. Check gateway: openclaw status\n2. Check for errors in logs (last 1h)\n3. Run: CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault checkpoint\n4. Check ~/workspace/memory/commitments/ for pending items\n5. Note any stale tasks or blockers\n6. ALWAYS report heartbeat status. If all clear, say so. Never skip this section.\n\n**PART 2: CALENDAR**\nFetch today's events:\nsource ~/.openclaw/.env && curl -s -X POST -H 'Content-Type: application/json' -H \"X-Api-Token: $N8N_WEBHOOK_TOKEN\" -d '{\"service\":\"calendar\",\"action\":\"today\"}' https://n8n-andy.xyz/webhook/openclaw-google\nIf it returns events, list them with times in AST (GMT-4). If it fails or returns empty, say 'Calendar: no events today' or 'Calendar: not configured yet'. Do NOT skip this section.\n\n**PART 3: BRIEFING**\n1. Run: ~/.agents/skills/todoist/scripts/todoist.sh list-tasks --filter 'today | overdue' — list tasks due today and overdue\n2. Check weather for Sint Maarten: curl -s 'wttr.in/Sint+Maarten?format=3'\n3. Any pending ClawVault commitments: CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault search 'commitments'\n\nFormat as a single concise morning update. Start with system health (one line if all good), then calendar events with times, then weather, then tasks/overdue, then commitments. Keep it punchy — no fluff.",
-        "model": "haiku"
-      },
-      "delivery": {
-        "mode": "announce",
-        "channel": "telegram",
-        "to": "-1003709913328:98"
-      },
-      "state": {
-        "nextRunAtMs": 1772881200000,
-        "lastRunAtMs": 1772794800005,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 122652,
-        "lastDelivered": true,
-        "lastDeliveryStatus": "delivered",
-        "consecutiveErrors": 0
-      }
-    },
-    {
-      "id": "d1d24b00-26f4-4ada-a0b8-084da9a61eef",
-      "agentId": "main",
-      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:1",
-      "name": "Self-Eval Review",
-      "enabled": true,
-      "createdAtMs": 1772478614503,
-      "updatedAtMs": 1772845949030,
-      "schedule": {
-        "kind": "every",
-        "everyMs": 43200000,
-        "anchorMs": 1772605365403
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Run a self-evaluation review. Steps:\n\n1. Read ~/workspace/memory/mistakes.md and ~/workspace/memory/current-weaknesses.md\n2. Check the last 3 session transcripts for patterns: Did I update the task dashboard? Did I read docs before config changes? Did I follow through on commitments? Did I test before declaring done?\n3. If I find new mistakes, append them to mistakes.md with the standard format (date | category | what happened | root cause | fix)\n4. Update current-weaknesses.md: remove resolved items, add new ones, keep max 5 items\n5. If any entry in mistakes.md is older than 30 days and resolved, move it to mistakes-archive.md\n6. Commit changes to git\n7. Report: list what was found and what changed. If nothing needs attention, say so briefly.",
-        "model": "sonnet"
-      },
-      "delivery": {
-        "mode": "none"
-      },
-      "state": {
-        "nextRunAtMs": 1772889014607,
-        "lastRunAtMs": 1772845814607,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 134423,
-        "lastDelivered": false,
-        "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0
-      }
-    },
-    {
       "id": "ce6da4ec-a6fb-4e29-86ec-43950146efab",
       "agentId": "main",
       "sessionKey": "agent:main:main",
       "name": "workspace-backup",
       "enabled": true,
       "createdAtMs": 1772283080996,
-      "updatedAtMs": 1772856014193,
+      "updatedAtMs": 1772877027410,
       "schedule": {
         "kind": "cron",
         "expr": "0 0 * * *",
@@ -87,7 +17,7 @@
       "wakeMode": "now",
       "payload": {
         "kind": "agentTurn",
-        "message": "Backup workspace to GitHub. Run these commands:\n1. cd ~/workspace\n2. Export cron jobs to both locations: openclaw cron list --json | tee backups/cron-jobs.json > dashboard/cron-jobs.json 2>/dev/null || true\n3. Copy config: cp ~/.openclaw/openclaw.json backups/openclaw.json\n4. git add -A && git diff --cached --stat\n5. If there are changes: git commit -m \"Daily backup $(date +%Y-%m-%d)\" && git push\n6. If no changes, stay silent.\nOnly report if the push failed.",
+        "message": "Backup workspace to GitHub. Run these commands:\n1. cd ~/workspace\n2. Run ~/workspace/bin/update-mission-control-status to refresh live stats\n3. Export cron jobs to both locations: openclaw cron list --json | tee backups/cron-jobs.json > dashboard/cron-jobs.json 2>/dev/null || true\n4. Copy config: cp ~/.openclaw/openclaw.json backups/openclaw.json\n5. git add -A && git diff --cached --stat\n6. If there are changes: git commit -m \"Daily backup $(date +%Y-%m-%d)\" && git push\n7. cd ~/workspace/dashboard && git add -A && git diff --cached --stat\n8. If there are changes: git commit -m \"Data sync $(date +%Y-%m-%d)\" && git push\n9. If no changes in either, stay silent.\nOnly report if a push failed.",
         "model": "haiku"
       },
       "delivery": {
@@ -103,7 +33,8 @@
         "lastDurationMs": 14182,
         "lastDelivered": false,
         "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0
+        "consecutiveErrors": 0,
+        "runningAtMs": 1772942400016
       }
     },
     {
@@ -169,6 +100,41 @@
       },
       "state": {
         "nextRunAtMs": 1772949600000
+      }
+    },
+    {
+      "id": "c371d06f-6bc3-460a-8b67-e2d246ea67bb",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
+      "name": "Refresh Mission Control memory.json",
+      "enabled": true,
+      "createdAtMs": 1772894129624,
+      "updatedAtMs": 1772928296430,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 */6 * * *",
+        "tz": "UTC",
+        "staggerMs": 300000
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run ~/workspace/bin/refresh-memory-json.sh to regenerate the Mission Control memory.json and push to GitHub. Just run it and report the result briefly.",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {
+        "nextRunAtMs": 1772949887432,
+        "lastRunAtMs": 1772928287440,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 8990,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
       }
     },
     {
@@ -268,11 +234,81 @@
       "state": {
         "nextRunAtMs": 1772960400000
       }
+    },
+    {
+      "id": "dafc366d-e8b0-4867-8657-5ee5e14b632d",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "morning-briefing",
+      "enabled": true,
+      "createdAtMs": 1772283294696,
+      "updatedAtMs": 1772881282173,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "America/Lower_Princes"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Morning briefing for Andy. Three parts:\n\n**PART 1: HEARTBEAT (always include, even if everything is fine)**\n1. Check gateway: openclaw status\n2. Check for errors in logs (last 1h)\n3. Run: CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault checkpoint\n4. Check ~/workspace/memory/commitments/ for pending items\n5. Note any stale tasks or blockers\n6. ALWAYS report heartbeat status. If all clear, say so. Never skip this section.\n\n**PART 2: CALENDAR**\nFetch today's events:\nsource ~/.openclaw/.env && curl -s -X POST -H 'Content-Type: application/json' -H \"X-Api-Token: $N8N_WEBHOOK_TOKEN\" -d '{\"service\":\"calendar\",\"action\":\"today\"}' https://n8n-andy.xyz/webhook/openclaw-google\nIf it returns events, list them with times in AST (GMT-4). If it fails or returns empty, say 'Calendar: no events today' or 'Calendar: not configured yet'. Do NOT skip this section.\n\n**PART 3: BRIEFING**\n1. Run: ~/.agents/skills/todoist/scripts/todoist.sh list-tasks --filter 'today | overdue' — list tasks due today and overdue\n2. Check weather for Sint Maarten: curl -s 'wttr.in/Sint+Maarten?format=3'\n3. Any pending ClawVault commitments: CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault search 'commitments'\n\nFormat as a single concise morning update. Start with system health (one line if all good), then calendar events with times, then weather, then tasks/overdue, then commitments. Keep it punchy — no fluff.",
+        "model": "haiku"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003709913328:98"
+      },
+      "state": {
+        "nextRunAtMs": 1772967600000,
+        "lastRunAtMs": 1772881200016,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 82157,
+        "lastDelivered": true,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "d1d24b00-26f4-4ada-a0b8-084da9a61eef",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:1",
+      "name": "Self-Eval Review",
+      "enabled": true,
+      "createdAtMs": 1772478614503,
+      "updatedAtMs": 1772932296892,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 43200000,
+        "anchorMs": 1772605365403
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run a self-evaluation review. Steps:\n\n1. Read ~/workspace/memory/mistakes.md and ~/workspace/memory/current-weaknesses.md\n2. Check the last 3 session transcripts for patterns: Did I update the task dashboard? Did I read docs before config changes? Did I follow through on commitments? Did I test before declaring done?\n3. If I find new mistakes, append them to mistakes.md with the standard format (date | category | what happened | root cause | fix)\n4. Update current-weaknesses.md: remove resolved items, add new ones, keep max 5 items\n5. If any entry in mistakes.md is older than 30 days and resolved, move it to mistakes-archive.md\n6. Commit changes to git\n7. Report: list what was found and what changed. If nothing needs attention, say so briefly.",
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {
+        "nextRunAtMs": 1772975414626,
+        "lastRunAtMs": 1772932214626,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 82266,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
     }
   ],
-  "total": 8,
+  "total": 9,
   "offset": 0,
-  "limit": 8,
+  "limit": 9,
   "hasMore": false,
   "nextOffset": null
 }
