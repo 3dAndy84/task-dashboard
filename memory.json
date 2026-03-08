@@ -1,4 +1,4 @@
-{"generated":1772928293107,"total":84,"entries":[
+{"generated":1772949893439,"total":82,"entries":[
   {"title":"2 layer cron pattern","category":"decisions","file":"2-layer-cron-pattern.md","date":"2026-03-03","modified":1772534558000,"preview":"All recurring crons should use a 2-layer approach: Layer 1 is a cheap bash pre-check that determines if there's actual work to do. Layer 2 is the LLM call, only triggered when the pre-check finds some "}
 ,
   {"title":"2026 03 02","category":"decisions","file":"2026-03-02.md","date":"2026-03-02","modified":1772660188000,"preview":"# decisions — [[projects/2026-03-02]] "}
@@ -14,8 +14,6 @@
   {"title":"clawvault path fix","category":"decisions","file":"clawvault-path-fix.md","date":"2026-02-28","modified":1772290422000,"preview":"CLAWVAULT_PATH=/home/clawd/workspace/memory added to ~/.openclaw/.env. Required for clawvault CLI to work in cron jobs and heartbeats. "}
 ,
   {"title":"consolidated to workspace group","category":"decisions","file":"consolidated-to-workspace-group.md","date":"2026-02-28","modified":1772290239000,"preview":"Consolidated all comms to Telegram workspace group (-1003709913328) with topics. General topic is default for all interaction. Project topics (Coast Guard, Valley Estate, Dominica, Infrastructure) are "}
-,
-  {"title":"cron job schedule feb28","category":"decisions","file":"cron-job-schedule-feb28.md","date":"2026-02-28","modified":1772290424000,"preview":"Cron jobs as of Feb 28 2026: heartbeat (every hour except 7am AST, haiku, delivers to workspace group topic 98), morning-briefing (7am AST, haiku, includes heartbeat+weather+todoist+commitments, deliv "}
 ,
   {"title":"delegation first operating model","category":"decisions","file":"delegation-first-operating-model.md","date":"2026-03-04","modified":1772665837000,"preview":"Andy confirmed: Opus orchestrates, Sonnet sub-agents execute. Only use Opus directly for complex reasoning, architecture, or sensitive ops. If multiple sub-agents can handle it equally well, always de "}
 ,
@@ -46,8 +44,6 @@
   {"title":"todoist single capture point","category":"decisions","file":"todoist-single-capture-point.md","date":"2026-02-28","modified":1772290420000,"preview":"Todoist is the single task capture point. Projects: Inbox, Valley Estate, Coast Guard, Dominica. Any task/reminder/todo goes straight to Todoist in the right project. API key in .env, script at ~/.age "}
 ,
   {"title":"voice alice","category":"decisions","file":"voice-alice.md","date":"2026-03-01","modified":1772406384000,"preview":"Max's TTS voice is Alice (ElevenLabs ID: Xb7hH8MSUJpSbSDYk0k2). British, clear, engaging. Note: OpenClaw's built-in TTS tool ignores the config voiceId — use direct ElevenLabs API calls for correct  "}
-,
-  {"title":"voice identity alice","category":"decisions","file":"voice-identity-alice.md","date":"2026-03-01","modified":1772408281000,"preview":"Max's TTS voice is Alice (ElevenLabs ID: Xb7hH8MSUJpSbSDYk0k2). British, clear, engaging. Andy chose from 6 female voice samples. Note: OpenClaw built-in TTS tool ignores config voiceId — must call  "}
 ,
   {"title":"workspace git backup","category":"decisions","file":"workspace-git-backup.md","date":"2026-02-28","modified":1772290423000,"preview":"Workspace backed up to private GitHub repo: github.com/3dAndy84/workspace. Daily backup cron at midnight AST exports cron jobs + openclaw config, commits and pushes. PAT embedded in remote URL. .gitig "}
 ,
