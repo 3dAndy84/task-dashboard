@@ -1,241 +1,6 @@
 {
   "jobs": [
     {
-      "id": "ce6da4ec-a6fb-4e29-86ec-43950146efab",
-      "agentId": "main",
-      "sessionKey": "agent:main:main",
-      "name": "workspace-backup",
-      "enabled": true,
-      "createdAtMs": 1772283080996,
-      "updatedAtMs": 1772877027410,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 0 * * *",
-        "tz": "America/Lower_Princes"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Backup workspace to GitHub. Run these commands:\n1. cd ~/workspace\n2. Run ~/workspace/bin/update-mission-control-status to refresh live stats\n3. Export cron jobs to both locations: openclaw cron list --json | tee backups/cron-jobs.json > dashboard/cron-jobs.json 2>/dev/null || true\n4. Copy config: cp ~/.openclaw/openclaw.json backups/openclaw.json\n5. git add -A && git diff --cached --stat\n6. If there are changes: git commit -m \"Daily backup $(date +%Y-%m-%d)\" && git push\n7. cd ~/workspace/dashboard && git add -A && git diff --cached --stat\n8. If there are changes: git commit -m \"Data sync $(date +%Y-%m-%d)\" && git push\n9. If no changes in either, stay silent.\nOnly report if a push failed.",
-        "model": "haiku"
-      },
-      "delivery": {
-        "mode": "announce",
-        "channel": "telegram",
-        "to": "-1003709913328:102"
-      },
-      "state": {
-        "nextRunAtMs": 1772942400000,
-        "lastRunAtMs": 1772856000011,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 14182,
-        "lastDelivered": false,
-        "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0,
-        "runningAtMs": 1772942400016
-      }
-    },
-    {
-      "id": "43c6e119-4cb9-4d7f-920c-e1e36f2531c4",
-      "agentId": "main",
-      "sessionKey": "agent:main:main",
-      "name": "memory-hygiene",
-      "enabled": true,
-      "createdAtMs": 1772283019225,
-      "updatedAtMs": 1772750475978,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 1 * * 0",
-        "tz": "America/Lower_Princes"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Memory hygiene review. Go through ClawVault entries:\n1. Run: CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault search '*' to list all entries\n2. Review each category (decisions, lessons, commitments, facts, people, projects, patterns, preferences)\n3. Flag entries older than 30 days that are no longer relevant (outdated decisions, completed commitments, stale facts)\n4. Delete truly obsolete entries with clawvault forget\n5. Summarize what was cleaned up and what was kept\n6. Only report if something was actually cleaned or if there's something noteworthy. Otherwise stay silent.",
-        "model": "haiku"
-      },
-      "delivery": {
-        "mode": "announce",
-        "channel": "telegram",
-        "to": "-1003709913328:102"
-      },
-      "state": {
-        "nextRunAtMs": 1772946000000,
-        "lastRunAtMs": 1772341220930,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 32303,
-        "lastDelivered": true,
-        "lastDeliveryStatus": "delivered",
-        "consecutiveErrors": 0
-      }
-    },
-    {
-      "id": "7063ca5d-7581-4cff-8ec2-a66899b1b5e4",
-      "agentId": "main",
-      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
-      "name": "weekly-setup-review",
-      "enabled": true,
-      "createdAtMs": 1772605505065,
-      "updatedAtMs": 1772605505065,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 2 * * 0",
-        "tz": "America/Lower_Princes"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Weekly setup review. Check the full OpenClaw environment and report only issues or actionable items.\n\n1. **Gateway health:** Run `openclaw status` — check version, session count, errors\n2. **Cron jobs:** List all cron jobs. Flag any that are disabled, failing, or have stale configs\n3. **System resources:** Check disk (`df -h /`), memory (`free -h`), uptime\n4. **QMD status:** Run `qmd status` — flag pending embeddings if >100\n5. **Git status:** `cd ~/workspace && git status --short` — flag uncommitted changes\n6. **Memory hygiene:** Check ~/workspace/memory/commitments/ for stale items, review current-weaknesses.md is still relevant\n7. **OpenClaw updates:** Compare installed vs latest (`openclaw status` shows this)\n\nFormat as a concise report. If everything is clean, say so in one line. Only flag things that actually need Andy's attention. Deliver the report — don't stay silent even if all clear.",
-        "model": "haiku"
-      },
-      "delivery": {
-        "mode": "announce",
-        "channel": "telegram",
-        "to": "-1003709913328:102"
-      },
-      "state": {
-        "nextRunAtMs": 1772949600000
-      }
-    },
-    {
-      "id": "c371d06f-6bc3-460a-8b67-e2d246ea67bb",
-      "agentId": "main",
-      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
-      "name": "Refresh Mission Control memory.json",
-      "enabled": true,
-      "createdAtMs": 1772894129624,
-      "updatedAtMs": 1772928296430,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 */6 * * *",
-        "tz": "UTC",
-        "staggerMs": 300000
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Run ~/workspace/bin/refresh-memory-json.sh to regenerate the Mission Control memory.json and push to GitHub. Just run it and report the result briefly.",
-        "timeoutSeconds": 120
-      },
-      "delivery": {
-        "mode": "none"
-      },
-      "state": {
-        "nextRunAtMs": 1772949887432,
-        "lastRunAtMs": 1772928287440,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 8990,
-        "lastDelivered": false,
-        "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0
-      }
-    },
-    {
-      "id": "fe42216c-e3cc-486d-82c3-50597146a671",
-      "agentId": "main",
-      "name": "clawvault-update-check",
-      "enabled": true,
-      "createdAtMs": 1771116405246,
-      "updatedAtMs": 1772750480132,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 3 * * 0",
-        "tz": "America/Lower_Princes"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Check for clawvault update - run `npm view clawvault version` to get latest, compare with `clawvault --version` for installed. Only reply if update available, otherwise stay silent.",
-        "model": "haiku"
-      },
-      "state": {
-        "nextRunAtMs": 1772953200000,
-        "lastRunAtMs": 1772521200013,
-        "lastStatus": "ok",
-        "lastDurationMs": 8221,
-        "consecutiveErrors": 0,
-        "lastRunStatus": "ok",
-        "lastDelivered": false,
-        "lastDeliveryStatus": "not-delivered"
-      },
-      "delivery": {
-        "mode": "announce",
-        "channel": "telegram",
-        "to": "-1003709913328:102"
-      }
-    },
-    {
-      "id": "a9b19543-1b47-4466-8cb9-b738f3f03631",
-      "agentId": "main",
-      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
-      "name": "clawvault-observe",
-      "enabled": true,
-      "createdAtMs": 1772659182696,
-      "updatedAtMs": 1772870464619,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 4 * * *",
-        "tz": "America/Lower_Princes"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Run ClawVault observation on all active sessions. Execute:\n\n1. `cd ~/workspace && CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault observe --active --cron`\n2. If observations were written, run `cd ~/workspace && git add -A && git commit -m \"clawvault: nightly observations $(date +%Y-%m-%d)\" && git push`\n3. Report number of sessions observed and observations written. If nothing new, stay silent.",
-        "model": "haiku"
-      },
-      "delivery": {
-        "mode": "none"
-      },
-      "state": {
-        "nextRunAtMs": 1772956800000,
-        "lastRunAtMs": 1772870400008,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 64611,
-        "lastDelivered": false,
-        "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0
-      }
-    },
-    {
-      "id": "260f8441-0d77-4d8a-97aa-dcd6afb1cb44",
-      "agentId": "main",
-      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
-      "name": "clawvault-reflect",
-      "enabled": true,
-      "createdAtMs": 1772659182723,
-      "updatedAtMs": 1772659182723,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 5 * * 0",
-        "tz": "America/Lower_Princes"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Run ClawVault reflection to promote stable observations into weekly reflections. Execute:\n\n1. `cd ~/workspace && CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault reflect`\n2. If reflections were promoted, also run `clawvault reweave` to mark superseded observations\n3. Run `qmd update && qmd embed` to reindex\n4. `cd ~/workspace && git add -A && git commit -m \"clawvault: weekly reflection $(date +%Y-%m-%d)\" && git push`\n5. Summarize what was reflected and reweaved. If nothing promoted, say so briefly.",
-        "model": "haiku"
-      },
-      "delivery": {
-        "mode": "announce",
-        "channel": "telegram",
-        "to": "-1003709913328:102"
-      },
-      "state": {
-        "nextRunAtMs": 1772960400000
-      }
-    },
-    {
       "id": "dafc366d-e8b0-4867-8657-5ee5e14b632d",
       "agentId": "main",
       "sessionKey": "agent:main:main",
@@ -272,6 +37,41 @@
       }
     },
     {
+      "id": "c371d06f-6bc3-460a-8b67-e2d246ea67bb",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
+      "name": "Refresh Mission Control memory.json",
+      "enabled": true,
+      "createdAtMs": 1772894129624,
+      "updatedAtMs": 1772949896677,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 */6 * * *",
+        "tz": "UTC",
+        "staggerMs": 300000
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run ~/workspace/bin/refresh-memory-json.sh to regenerate the Mission Control memory.json and push to GitHub. Just run it and report the result briefly.",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {
+        "nextRunAtMs": 1772971487432,
+        "lastRunAtMs": 1772949887440,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 9237,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
       "id": "d1d24b00-26f4-4ada-a0b8-084da9a61eef",
       "agentId": "main",
       "sessionKey": "agent:main:telegram:group:-1003709913328:topic:1",
@@ -302,6 +102,219 @@
         "lastDurationMs": 82266,
         "lastDelivered": false,
         "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "ce6da4ec-a6fb-4e29-86ec-43950146efab",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "workspace-backup",
+      "enabled": true,
+      "createdAtMs": 1772283080996,
+      "updatedAtMs": 1772942425480,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 0 * * *",
+        "tz": "America/Lower_Princes"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Backup workspace to GitHub. Run these commands:\n1. cd ~/workspace\n2. Run ~/workspace/bin/update-mission-control-status to refresh live stats\n3. Export cron jobs to both locations: openclaw cron list --json | tee backups/cron-jobs.json > dashboard/cron-jobs.json 2>/dev/null || true\n4. Copy config: cp ~/.openclaw/openclaw.json backups/openclaw.json\n5. git add -A && git diff --cached --stat\n6. If there are changes: git commit -m \"Daily backup $(date +%Y-%m-%d)\" && git push\n7. cd ~/workspace/dashboard && git add -A && git diff --cached --stat\n8. If there are changes: git commit -m \"Data sync $(date +%Y-%m-%d)\" && git push\n9. If no changes in either, stay silent.\nOnly report if a push failed.",
+        "model": "haiku"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003709913328:102"
+      },
+      "state": {
+        "nextRunAtMs": 1773028800000,
+        "lastRunAtMs": 1772942400016,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 25464,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "a9b19543-1b47-4466-8cb9-b738f3f03631",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
+      "name": "clawvault-observe",
+      "enabled": true,
+      "createdAtMs": 1772659182696,
+      "updatedAtMs": 1772956856416,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 * * *",
+        "tz": "America/Lower_Princes"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run ClawVault observation on all active sessions. Execute:\n\n1. `cd ~/workspace && CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault observe --active --cron`\n2. If observations were written, run `cd ~/workspace && git add -A && git commit -m \"clawvault: nightly observations $(date +%Y-%m-%d)\" && git push`\n3. Report number of sessions observed and observations written. If nothing new, stay silent.",
+        "model": "haiku"
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {
+        "nextRunAtMs": 1773043200000,
+        "lastRunAtMs": 1772956800008,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 56408,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "43c6e119-4cb9-4d7f-920c-e1e36f2531c4",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "memory-hygiene",
+      "enabled": true,
+      "createdAtMs": 1772283019225,
+      "updatedAtMs": 1772946086423,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 1 * * 0",
+        "tz": "America/Lower_Princes"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Memory hygiene review. Go through ClawVault entries:\n1. Run: CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault search '*' to list all entries\n2. Review each category (decisions, lessons, commitments, facts, people, projects, patterns, preferences)\n3. Flag entries older than 30 days that are no longer relevant (outdated decisions, completed commitments, stale facts)\n4. Delete truly obsolete entries with clawvault forget\n5. Summarize what was cleaned up and what was kept\n6. Only report if something was actually cleaned or if there's something noteworthy. Otherwise stay silent.",
+        "model": "haiku"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003709913328:102"
+      },
+      "state": {
+        "nextRunAtMs": 1773550800000,
+        "lastRunAtMs": 1772946000010,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 86413,
+        "lastDelivered": true,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "7063ca5d-7581-4cff-8ec2-a66899b1b5e4",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
+      "name": "weekly-setup-review",
+      "enabled": true,
+      "createdAtMs": 1772605505065,
+      "updatedAtMs": 1772949634850,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 2 * * 0",
+        "tz": "America/Lower_Princes"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Weekly setup review. Check the full OpenClaw environment and report only issues or actionable items.\n\n1. **Gateway health:** Run `openclaw status` — check version, session count, errors\n2. **Cron jobs:** List all cron jobs. Flag any that are disabled, failing, or have stale configs\n3. **System resources:** Check disk (`df -h /`), memory (`free -h`), uptime\n4. **QMD status:** Run `qmd status` — flag pending embeddings if >100\n5. **Git status:** `cd ~/workspace && git status --short` — flag uncommitted changes\n6. **Memory hygiene:** Check ~/workspace/memory/commitments/ for stale items, review current-weaknesses.md is still relevant\n7. **OpenClaw updates:** Compare installed vs latest (`openclaw status` shows this)\n\nFormat as a concise report. If everything is clean, say so in one line. Only flag things that actually need Andy's attention. Deliver the report — don't stay silent even if all clear.",
+        "model": "haiku"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003709913328:102"
+      },
+      "state": {
+        "nextRunAtMs": 1773554400000,
+        "lastRunAtMs": 1772949600012,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 34838,
+        "lastDelivered": true,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "fe42216c-e3cc-486d-82c3-50597146a671",
+      "agentId": "main",
+      "name": "clawvault-update-check",
+      "enabled": true,
+      "createdAtMs": 1771116405246,
+      "updatedAtMs": 1772953206422,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * 0",
+        "tz": "America/Lower_Princes"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Check for clawvault update - run `npm view clawvault version` to get latest, compare with `clawvault --version` for installed. Only reply if update available, otherwise stay silent.",
+        "model": "haiku"
+      },
+      "state": {
+        "nextRunAtMs": 1773558000000,
+        "lastRunAtMs": 1772953200006,
+        "lastStatus": "ok",
+        "lastDurationMs": 6416,
+        "consecutiveErrors": 0,
+        "lastRunStatus": "ok",
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003709913328:102"
+      }
+    },
+    {
+      "id": "260f8441-0d77-4d8a-97aa-dcd6afb1cb44",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
+      "name": "clawvault-reflect",
+      "enabled": true,
+      "createdAtMs": 1772659182723,
+      "updatedAtMs": 1772960702064,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 5 * * 0",
+        "tz": "America/Lower_Princes"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run ClawVault reflection to promote stable observations into weekly reflections. Execute:\n\n1. `cd ~/workspace && CLAWVAULT_PATH=/home/clawd/workspace/memory clawvault reflect`\n2. If reflections were promoted, also run `clawvault reweave` to mark superseded observations\n3. Run `qmd update && qmd embed` to reindex\n4. `cd ~/workspace && git add -A && git commit -m \"clawvault: weekly reflection $(date +%Y-%m-%d)\" && git push`\n5. Summarize what was reflected and reweaved. If nothing promoted, say so briefly.",
+        "model": "haiku"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003709913328:102"
+      },
+      "state": {
+        "nextRunAtMs": 1773565200000,
+        "lastRunAtMs": 1772960400018,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 302046,
+        "lastDelivered": true,
+        "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0
       }
     }
