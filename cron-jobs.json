@@ -1,43 +1,6 @@
 {
   "jobs": [
     {
-      "id": "c371d06f-6bc3-460a-8b67-e2d246ea67bb",
-      "agentId": "main",
-      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
-      "name": "Refresh Mission Control memory.json",
-      "enabled": true,
-      "createdAtMs": 1772894129624,
-      "updatedAtMs": 1773014420310,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 */6 * * *",
-        "tz": "UTC",
-        "staggerMs": 300000
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Run ~/workspace/bin/refresh-memory-json.sh to regenerate the Mission Control memory.json and push to GitHub. Just run it and report the result briefly.",
-        "timeoutSeconds": 120,
-        "model": "haiku"
-      },
-      "delivery": {
-        "mode": "none"
-      },
-      "state": {
-        "nextRunAtMs": 1773014687432,
-        "lastRunAtMs": 1773014400047,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 20263,
-        "lastDelivered": false,
-        "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0,
-        "runningAtMs": 1773014687446
-      }
-    },
-    {
       "id": "ce6da4ec-a6fb-4e29-86ec-43950146efab",
       "agentId": "main",
       "sessionKey": "agent:main:main",
@@ -68,6 +31,43 @@
         "lastRunStatus": "ok",
         "lastStatus": "ok",
         "lastDurationMs": 25464,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0,
+        "runningAtMs": 1773028800044
+      }
+    },
+    {
+      "id": "c371d06f-6bc3-460a-8b67-e2d246ea67bb",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
+      "name": "Refresh Mission Control memory.json",
+      "enabled": true,
+      "createdAtMs": 1772894129624,
+      "updatedAtMs": 1773014696310,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 */6 * * *",
+        "tz": "UTC",
+        "staggerMs": 300000
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run ~/workspace/bin/refresh-memory-json.sh to regenerate the Mission Control memory.json and push to GitHub. Just run it and report the result briefly.",
+        "timeoutSeconds": 120,
+        "model": "haiku"
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {
+        "nextRunAtMs": 1773036287432,
+        "lastRunAtMs": 1773014687446,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 8864,
         "lastDelivered": false,
         "lastDeliveryStatus": "not-delivered",
         "consecutiveErrors": 0
