@@ -1288,25 +1288,25 @@
             // Next scheduled jobs — sorted by next run (soonest first), stale ones at the end
             const upcomingJobs = allCronJobs
                 .filter(j => j.enabled)
-                .sort((a, b) => {
-                    const aNext = (a.state && a.state.nextRunAtMs) || Infinity;
-                    const bNext = (b.state && b.state.nextRunAtMs) || Infinity;
-                    const now = Date.now();
-                    const aFuture = aNext > now ? 0 : 1;
-                    const bFuture = bNext > now ? 0 : 1;
-                    if (aFuture !== bFuture) return aFuture - bFuture;
-                    return aNext - bNext;
+                .map(j => {
+                    const rawNext = (j.state && j.state.nextRunAtMs) || Infinity;
+                    const effectiveNext = rawNext > Date.now() 
+                        ? rawNext 
+                        : (estimateNextRun(j.schedule, rawNext) || Infinity);
+                    return { ...j, _effectiveNext: effectiveNext };
                 })
+                .sort((a, b) => a._effectiveNext - b._effectiveNext)
                 .slice(0, 5);
 
             if (upcomingJobs.length > 0) {
                 document.getElementById('overview-next-jobs').innerHTML = upcomingJobs.map(job => {
                     const sched = formatCronSchedule(job.schedule);
-                    const nextRun = job.state && job.state.nextRunAtMs;
-                    const nextLabel = nextRun
-                        ? (nextRun > Date.now() ? formatRelativeTime(nextRun) : `<span style="color:#f5a623;">stale</span>`)
+                    const nextLabel = job._effectiveNext < Infinity
+                        ? formatRelativeTime(job._effectiveNext)
                         : '—';
-                    return `<div style="margin-bottom: 4px;"><strong>${job.name}</strong>: <span style="color: #888;">${sched}</span> <span style="color: #666; font-size: 0.85em;">(${nextLabel})</span></div>`;
+                    const isEstimated = job.state && job.state.nextRunAtMs && job.state.nextRunAtMs <= Date.now();
+                    const suffix = isEstimated ? ' <span style="color:#888;font-size:10px;">(est)</span>' : '';
+                    return `<div style="margin-bottom: 4px;"><strong>${job.name}</strong>: <span style="color: #888;">${sched}</span> <span style="color: #666; font-size: 0.85em;">(${nextLabel}${suffix})</span></div>`;
                 }).join('');
             } else {
                 document.getElementById('overview-next-jobs').textContent = 'No upcoming jobs';
@@ -1482,6 +1482,34 @@
             } else {
                 return `${seconds}s`;
             }
+        }
+
+        function estimateNextRun(schedule, lastNextRunMs) {
+            const now = Date.now();
+            if (schedule.kind === 'every' && schedule.everyMs) {
+                // For interval schedules, project forward from last known next run
+                let next = lastNextRunMs;
+                while (next <= now) next += schedule.everyMs;
+                return next;
+            }
+            if (schedule.kind === 'cron' && schedule.expr) {
+                // For common cron patterns, estimate interval and project forward
+                const parts = schedule.expr.split(' ');
+                let intervalMs = null;
+                if (parts[1] && parts[1].startsWith('*/')) {
+                    intervalMs = parseInt(parts[1].replace('*/', '')) * 3600000;
+                } else if (parts[2] === '*' && parts[3] === '*' && parts[4] === '*') {
+                    intervalMs = 86400000; // daily
+                } else if (parts[4] !== '*') {
+                    intervalMs = 604800000; // weekly
+                }
+                if (intervalMs) {
+                    let next = lastNextRunMs;
+                    while (next <= now) next += intervalMs;
+                    return next;
+                }
+            }
+            return null;
         }
 
         function formatCronSchedule(schedule) {
@@ -1704,11 +1732,18 @@
                     : 'Never';
 
                 const nextRunMs = job.state && job.state.nextRunAtMs;
-                const nextRun = nextRunMs
-                    ? (nextRunMs > Date.now() 
-                        ? formatRelativeTime(nextRunMs) 
-                        : `<span style="color:#f5a623;" title="Data is stale — next run has passed since last export">${formatCronSchedule(job.schedule)}</span>`)
-                    : 'Not scheduled';
+                let nextRun;
+                if (!nextRunMs) {
+                    nextRun = 'Not scheduled';
+                } else if (nextRunMs > Date.now()) {
+                    nextRun = formatRelativeTime(nextRunMs);
+                } else {
+                    // Stale data — estimate next run from schedule
+                    const estimated = estimateNextRun(job.schedule, nextRunMs);
+                    nextRun = estimated 
+                        ? `~${formatRelativeTime(estimated)} <span style="color:#888;font-size:10px;">(est)</span>`
+                        : formatCronSchedule(job.schedule);
+                }
 
                 const enabledIndicator = job.enabled 
                     ? '<span class="enabled-indicator"></span>'
