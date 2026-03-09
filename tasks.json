@@ -217,12 +217,13 @@
       "id": "integration-ingestion-gate-full-pipeline",
       "title": "Integration: Ingestion Gate + Full Pipeline",
       "description": "Single entry point chaining all 6 layers. sanitize→scan→gate→redact→govern→access control.",
-      "status": "backlog",
+      "status": "in-progress",
       "priority": "high",
       "agent": "max",
       "project": "security-hardening",
       "created": "2026-03-09T17:46:35Z",
-      "updated": "2026-03-09T17:46:35Z"
+      "updated": "2026-03-09T17:46:36Z",
+      "started_at": "2026-03-09T17:46:36Z"
     }
   ]
 }
