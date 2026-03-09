@@ -243,13 +243,14 @@
       "id": "enable-llm-scanner-nightly-security-cron",
       "title": "Enable LLM scanner + nightly security cron",
       "description": "Turn on frontier scanner, test with real payloads, set up nightly security review cron job.",
-      "status": "in-progress",
+      "status": "done",
       "priority": "high",
       "agent": "max",
       "project": "security-hardening",
       "created": "2026-03-09T19:12:58Z",
-      "updated": "2026-03-09T19:13:03Z",
-      "started_at": "2026-03-09T19:13:03Z"
+      "updated": "2026-03-09T19:13:49Z",
+      "started_at": "2026-03-09T19:13:03Z",
+      "completed_at": "2026-03-09T19:13:49Z"
     }
   ]
 }
