@@ -179,12 +179,13 @@
       "id": "layer-4-redaction-pipeline",
       "title": "Layer 4: Redaction Pipeline",
       "description": "PII, secrets, notification redaction. Chains into outbound pipeline.",
-      "status": "backlog",
+      "status": "in-progress",
       "priority": "high",
       "agent": "max",
       "project": "security-hardening",
       "created": "2026-03-09T16:17:07Z",
-      "updated": "2026-03-09T16:17:07Z"
+      "updated": "2026-03-09T16:17:08Z",
+      "started_at": "2026-03-09T16:17:08Z"
     }
   ]
 }
