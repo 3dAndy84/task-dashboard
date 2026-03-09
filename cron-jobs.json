@@ -1,43 +1,6 @@
 {
   "jobs": [
     {
-      "id": "ce6da4ec-a6fb-4e29-86ec-43950146efab",
-      "agentId": "main",
-      "sessionKey": "agent:main:main",
-      "name": "workspace-backup",
-      "enabled": true,
-      "createdAtMs": 1772283080996,
-      "updatedAtMs": 1772942425480,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 0 * * *",
-        "tz": "America/Lower_Princes"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Backup workspace to GitHub. Run these commands:\n1. cd ~/workspace\n2. Run ~/workspace/bin/update-mission-control-status to refresh live stats\n3. Export cron jobs to both locations: openclaw cron list --json | tee backups/cron-jobs.json > dashboard/cron-jobs.json 2>/dev/null || true\n4. Copy config: cp ~/.openclaw/openclaw.json backups/openclaw.json\n5. git add -A && git diff --cached --stat\n6. If there are changes: git commit -m \"Daily backup $(date +%Y-%m-%d)\" && git push\n7. cd ~/workspace/dashboard && git add -A && git diff --cached --stat\n8. If there are changes: git commit -m \"Data sync $(date +%Y-%m-%d)\" && git push\n9. If no changes in either, stay silent.\nOnly report if a push failed.",
-        "model": "haiku"
-      },
-      "delivery": {
-        "mode": "announce",
-        "channel": "telegram",
-        "to": "-1003709913328:102"
-      },
-      "state": {
-        "nextRunAtMs": 1773028800000,
-        "lastRunAtMs": 1772942400016,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 25464,
-        "lastDelivered": false,
-        "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0,
-        "runningAtMs": 1773028800044
-      }
-    },
-    {
       "id": "c371d06f-6bc3-460a-8b67-e2d246ea67bb",
       "agentId": "main",
       "sessionKey": "agent:main:telegram:group:-1003709913328:topic:102",
@@ -70,7 +33,8 @@
         "lastDurationMs": 8864,
         "lastDelivered": false,
         "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0
+        "consecutiveErrors": 0,
+        "runningAtMs": 1773036287447
       }
     },
     {
@@ -174,6 +138,42 @@
         "lastDurationMs": 101578,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "ce6da4ec-a6fb-4e29-86ec-43950146efab",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "workspace-backup",
+      "enabled": true,
+      "createdAtMs": 1772283080996,
+      "updatedAtMs": 1773028825448,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 0 * * *",
+        "tz": "America/Lower_Princes"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Backup workspace to GitHub. Run these commands:\n1. cd ~/workspace\n2. Run ~/workspace/bin/update-mission-control-status to refresh live stats\n3. Export cron jobs to both locations: openclaw cron list --json | tee backups/cron-jobs.json > dashboard/cron-jobs.json 2>/dev/null || true\n4. Copy config: cp ~/.openclaw/openclaw.json backups/openclaw.json\n5. git add -A && git diff --cached --stat\n6. If there are changes: git commit -m \"Daily backup $(date +%Y-%m-%d)\" && git push\n7. cd ~/workspace/dashboard && git add -A && git diff --cached --stat\n8. If there are changes: git commit -m \"Data sync $(date +%Y-%m-%d)\" && git push\n9. If no changes in either, stay silent.\nOnly report if a push failed.",
+        "model": "haiku"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003709913328:102"
+      },
+      "state": {
+        "nextRunAtMs": 1773115200000,
+        "lastRunAtMs": 1773028800044,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 25404,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
         "consecutiveErrors": 0
       }
     },
