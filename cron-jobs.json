@@ -7,7 +7,7 @@
       "name": "Refresh Mission Control memory.json",
       "enabled": true,
       "createdAtMs": 1772894129624,
-      "updatedAtMs": 1773209097835,
+      "updatedAtMs": 1773230701848,
       "schedule": {
         "kind": "cron",
         "expr": "0 */6 * * *",
@@ -26,15 +26,15 @@
         "mode": "none"
       },
       "state": {
-        "nextRunAtMs": 1773230687432,
-        "lastRunAtMs": 1773209087441,
+        "nextRunAtMs": 1773252287432,
+        "lastRunAtMs": 1773230687442,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 10394,
+        "lastDurationMs": 14406,
         "lastDeliveryStatus": "not-delivered",
         "consecutiveErrors": 0,
         "lastDelivered": false,
-        "runningAtMs": 1773230687442
+        "runningAtMs": 1773252287447
       }
     },
     {
