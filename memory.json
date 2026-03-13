@@ -1,4 +1,4 @@
-{"generated":1773403493863,"total":101,"entries":[
+{"generated":1773425092110,"total":102,"entries":[
   {"title":"2 layer cron pattern","category":"decisions","file":"2-layer-cron-pattern.md","date":"2026-03-03","modified":1772534558000,"preview":"All recurring crons should use a 2-layer approach: Layer 1 is a cheap bash pre-check that determines if there's actual work to do. Layer 2 is the LLM call, only triggered when the pre-check finds some "}
 ,
   {"title":"2026 03 02","category":"decisions","file":"2026-03-02.md","date":"2026-03-02","modified":1772660188000,"preview":"# decisions — [[projects/2026-03-02]] "}
@@ -46,6 +46,8 @@
   {"title":"n8n workflow protection rule","category":"decisions","file":"n8n-workflow-protection-rule.md","date":"2026-03-07","modified":1772909813000,"preview":"HARD RULE: Never edit working n8n workflows or delete workflows without explicit permission from Andy. This includes modifying nodes, changing parameters, deactivating, or removing workflows. Always a "}
 ,
   {"title":"openclaw gateway and watchdog coexistence","category":"decisions","file":"openclaw-gateway-and-watchdog-coexistence.md","date":"2026-03-04","modified":1772665056000,"preview":"openclaw-gateway.service and the watchdog service must work alongside each other. They are complementary services, not replacements. Both need to be running. "}
+,
+  {"title":"skip openclaw 2026312 anthropic_model_aliases tdz bug","category":"decisions","file":"skip-openclaw-2026312-anthropic_model_aliases-tdz-bug.md","date":"2026-03-13","modified":1773415817000,"preview":"2026.3.12 has a temporal dead zone bug in normalizeAnthropicModelId() that crashes on config load. GitHub issue #44977 confirms it. Staying on 2026.3.11 until a fix is released. Do not attempt the upd "}
 ,
   {"title":"sxm cams dashboard","category":"decisions","file":"sxm-cams-dashboard.md","date":"2026-03-01","modified":1772408280000,"preview":"SXM Webcam Dashboard deployed at https://cams.n8n-andy.xyz "}
 ,
