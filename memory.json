@@ -1,4 +1,4 @@
-{"generated":1773511492340,"total":103,"entries":[
+{"generated":1773533092629,"total":105,"entries":[
   {"title":"2 layer cron pattern","category":"decisions","file":"2-layer-cron-pattern.md","date":"2026-03-03","modified":1772534558000,"preview":"All recurring crons should use a 2-layer approach: Layer 1 is a cheap bash pre-check that determines if there's actual work to do. Layer 2 is the LLM call, only triggered when the pre-check finds some "}
 ,
   {"title":"2026 03 02","category":"decisions","file":"2026-03-02.md","date":"2026-03-02","modified":1772660188000,"preview":"# decisions — [[projects/2026-03-02]] "}
@@ -33,6 +33,8 @@
 ,
   {"title":"keep openclaw gatewayservice alongside watchdog","category":"decisions","file":"keep-openclaw-gatewayservice-alongside-watchdog.md","date":"2026-03-04","modified":1772666670000,"preview":"Andy confirmed: openclaw-gateway.service should run alongside openclaw-watchdog.service. Do NOT remove or disable it, even if doctor suggests cleanup. Both services are intentional. "}
 ,
+  {"title":"keep openclaw gatewayservice","category":"decisions","file":"keep-openclaw-gatewayservice.md","date":"2026-03-14","modified":1773516803000,"preview":"Andy explicitly said to NEVER delete ~/.config/systemd/user/openclaw-gateway.service. Even though openclaw doctor suggests removing it, we keep it. Do not offer to clean it up. "}
+,
   {"title":"max workspace telegram topics","category":"decisions","file":"max-workspace-telegram-topics.md","date":"2026-03-06","modified":1772811757000,"preview":"Forum topic IDs for Max Workspace group (-1003709913328): General = 1, Briefings & Heartbeats = 98, Coast Guard = 99, Valley Estate = 100, Infrastructure = 102, Dominica = 197, Personal = 1143 "}
 ,
   {"title":"memory architecture patterns finch guide","category":"decisions","file":"memory-architecture-patterns-finch-guide.md","date":"2026-03-03","modified":1772542211000,"preview":"Five core patterns from FinchInSlc memory guide: "}
@@ -46,6 +48,8 @@
   {"title":"n8n workflow protection rule","category":"decisions","file":"n8n-workflow-protection-rule.md","date":"2026-03-07","modified":1772909813000,"preview":"HARD RULE: Never edit working n8n workflows or delete workflows without explicit permission from Andy. This includes modifying nodes, changing parameters, deactivating, or removing workflows. Always a "}
 ,
   {"title":"openclaw gateway and watchdog coexistence","category":"decisions","file":"openclaw-gateway-and-watchdog-coexistence.md","date":"2026-03-04","modified":1772665056000,"preview":"openclaw-gateway.service and the watchdog service must work alongside each other. They are complementary services, not replacements. Both need to be running. "}
+,
+  {"title":"regular plugin and tool update checks","category":"decisions","file":"regular-plugin-and-tool-update-checks.md","date":"2026-03-14","modified":1773524277000,"preview":"Andy wants regular checks for updates on all plugins, tools, and dependencies Max uses. This includes: OpenClaw itself, installed plugins (lossless-claw, acpx, device-pair, etc.), npm packages, ClawVa "}
 ,
   {"title":"skip openclaw 2026312 anthropic_model_aliases tdz bug","category":"decisions","file":"skip-openclaw-2026312-anthropic_model_aliases-tdz-bug.md","date":"2026-03-13","modified":1773415817000,"preview":"2026.3.12 has a temporal dead zone bug in normalizeAnthropicModelId() that crashes on config load. GitHub issue #44977 confirms it. Staying on 2026.3.11 until a fix is released. Do not attempt the upd "}
 ,
