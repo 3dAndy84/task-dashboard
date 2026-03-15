@@ -1,4 +1,4 @@
-{"generated":1773576291776,"total":96,"entries":[
+{"generated":1773597892241,"total":97,"entries":[
   {"title":"2 layer cron pattern","category":"decisions","file":"2-layer-cron-pattern.md","date":"2026-03-03","modified":1772534558000,"preview":"All recurring crons should use a 2-layer approach: Layer 1 is a cheap bash pre-check that determines if there's actual work to do. Layer 2 is the LLM call, only triggered when the pre-check finds some "}
 ,
   {"title":"2026 03 02","category":"decisions","file":"2026-03-02.md","date":"2026-03-02","modified":1772660188000,"preview":"# decisions — [[projects/2026-03-02]] "}
@@ -186,6 +186,8 @@
   {"title":"clawvault task management","category":"facts","file":"clawvault-task-management.md","date":"2026-03-04","modified":1772665909000,"preview":"# ClawVault Task Management "}
 ,
   {"title":"n8n docker access","category":"facts","file":"n8n-docker-access.md","date":"2026-03-08","modified":1772966855000,"preview":"I have direct access to n8n via 'docker exec n8n' from the clawd user on the VPS. This gives full CLI control over n8n workflows (list, export, import, update, activate/deactivate). No n8n REST API ke "}
+,
+  {"title":"n8n error notifications","category":"facts","file":"n8n-error-notifications.md","date":"2026-03-15","modified":1773592878000,"preview":"Andy added error handler nodes to all n8n workflows. Error notifications are sent to the Max Workspace Telegram group (topic 1), same pattern as the Mission Control workflow. Expect n8n error alerts h "}
 ,
   {"title":"task dashboard cleared","category":"facts","file":"task-dashboard-cleared.md","date":"2026-02-28","modified":1772290428000,"preview":"Task dashboard (task-dashboard-eosin.vercel.app) cleared of all demo tasks on Feb 28 2026. tasks.json is empty. Todoist is now the primary task system. "}
 ,

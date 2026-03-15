@@ -7,7 +7,7 @@
       "name": "Refresh Mission Control memory.json",
       "enabled": true,
       "createdAtMs": 1772894129624,
-      "updatedAtMs": 1773554699340,
+      "updatedAtMs": 1773576299620,
       "schedule": {
         "kind": "cron",
         "expr": "0 0,6,12,18 * * *",
@@ -26,43 +26,15 @@
         "mode": "none"
       },
       "state": {
-        "nextRunAtMs": 1773576287432,
-        "lastRunAtMs": 1773554687443,
+        "nextRunAtMs": 1773597887432,
+        "lastRunAtMs": 1773576287442,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 11897,
+        "lastDurationMs": 12178,
         "lastDeliveryStatus": "not-delivered",
         "consecutiveErrors": 0,
         "lastDelivered": false,
-        "runningAtMs": 1773576287442
-      }
-    },
-    {
-      "id": "6415e74e-5b66-429c-9bf9-98957c4ced43",
-      "agentId": "ops",
-      "sessionKey": "agent:ops:telegram:group:-1003709913328:topic:1",
-      "name": "Weekly Update Check",
-      "enabled": true,
-      "createdAtMs": 1773524320472,
-      "updatedAtMs": 1773524320472,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 14 * * 0",
-        "tz": "America/Lower_Princes"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "WEEKLY UPDATE CHECK: Run `npm outdated -g 2>/dev/null`, `openclaw status | grep Update`, and check lossless-claw version vs `npm show @martian-engineering/lossless-claw version`. Summarize what's outdated and notify Andy via Telegram (-1003709913328 topic 1) with a concise update report. Only notify if there are actual updates available. Include severity (major/minor/patch) for each.",
-        "model": "anthropic/claude-sonnet-4-6",
-        "timeoutSeconds": 120
-      },
-      "delivery": {
-        "mode": "none"
-      },
-      "state": {
-        "nextRunAtMs": 1773597600000
+        "runningAtMs": 1773597887445
       }
     },
     {
@@ -417,6 +389,41 @@
         "lastDurationMs": 32106,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "6415e74e-5b66-429c-9bf9-98957c4ced43",
+      "agentId": "ops",
+      "sessionKey": "agent:ops:telegram:group:-1003709913328:topic:1",
+      "name": "Weekly Update Check",
+      "enabled": true,
+      "createdAtMs": 1773524320472,
+      "updatedAtMs": 1773597643755,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 14 * * 0",
+        "tz": "America/Lower_Princes"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "WEEKLY UPDATE CHECK: Run `npm outdated -g 2>/dev/null`, `openclaw status | grep Update`, and check lossless-claw version vs `npm show @martian-engineering/lossless-claw version`. Summarize what's outdated and notify Andy via Telegram (-1003709913328 topic 1) with a concise update report. Only notify if there are actual updates available. Include severity (major/minor/patch) for each.",
+        "model": "anthropic/claude-sonnet-4-6",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {
+        "nextRunAtMs": 1774202400000,
+        "lastRunAtMs": 1773597600034,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 43721,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
         "consecutiveErrors": 0
       }
     }
